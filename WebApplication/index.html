@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>FitApp</title>
+    <link rel="stylesheet" href="Style/homeStyle.css">
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loadGyms();
+
+            function loadGyms() {
+                $.get("/api/Teretana", function (data, status) {
+                    let table = '<table>';
+                    table += '<tr><th>Naziv</th><th>Adresa</th><th>Godina otvaranja</th><th></th></tr>';
+                    for (element in data) {
+                        let teretana = '<td>' + data[element].Naziv + '</td>';
+                        teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + '</td>';
+                        teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
+                        teretana += '<td><input type="submit" value="Detalji"/></td>';
+                        table += '<tr> ' + teretana + '</tr>';
+                    }
+                    table += '</table>';
+                    $('#content').html(table);
+                });
+            }
+        }
+        );
+    </script>
+</head>
+<body>
+    <h3 class="naslov">Fintes centri</h3>
+    <div id="content" class="styled-table"></div>
+
+</body>
+</html>

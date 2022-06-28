@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -20,19 +22,6 @@ namespace WebApplication.Models
             CenaPersonalniTrening = cenaPersonalniTrening;
         }
 
-        public FitnesCentar()
-        {
-            Naziv = "";
-            Adresa = new Adresa();
-            GodinaOtvaranja = 0;
-            Vlasnik = new Korisnik();
-            CenaMesec = 0;
-            CenaGodina = 0;
-            CenaTrening = 0;
-            CenaGrupniTrening = 0;
-            CenaPersonalniTrening = 0;
-        }
-
         public string Naziv { get; set; }
         public Adresa Adresa { get; set; }
         public int GodinaOtvaranja { get; set; }
@@ -44,6 +33,22 @@ namespace WebApplication.Models
         public double CenaPersonalniTrening { get; set; }
 
 
+        public static List<FitnesCentar> ReadFromJson()
+        {
+            List<FitnesCentar> teretane = new List<FitnesCentar>();
 
+            string jsonFromFile;
+            using (var reader = new StreamReader("D:\\Faks\\WEB\\WebApplication\\WebApplication\\TextFiles\\FitnesCentri.json"))
+            {
+                jsonFromFile = reader.ReadToEnd();
+            }
+            List<FitnesCentar> fitnesCentri = JsonConvert.DeserializeObject<List<FitnesCentar>>(jsonFromFile);
+            foreach (var x in fitnesCentri)
+            {
+                teretane.Add(x);
+            }
+            return teretane;
+            
+        }
     }
 }

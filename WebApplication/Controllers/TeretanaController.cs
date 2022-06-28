@@ -4,18 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
+using System.Web.Http.Results;
 using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
-    public class HomeController : Controller
+    public class TeretanaController : ApiController
     {
-        public ActionResult Index()
+        public List<FitnesCentar> Get()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return FitnesCentar.ReadFromJson();
         }
     }
 }

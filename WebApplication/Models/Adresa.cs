@@ -14,13 +14,6 @@ namespace WebApplication.Models
             Grad = grad;
             PostanskiBroj = postanskiBroj;
         }
-        public Adresa()
-        {
-            Ulica = "";
-            Broj = "";
-            Grad = "";
-            PostanskiBroj = 0;
-        }
 
         public string Ulica { get; set; }
         public string Broj { get; set; }

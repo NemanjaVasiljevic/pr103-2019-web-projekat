@@ -1,0 +1,32 @@
+[
+  {
+    "Naziv": "X Gym",
+    "Adresa": {
+      "Ulica": "Cirpanova",
+      "Broj": "26",
+      "Grad": "Novi Sad",
+      "PostanskiBroj": 21000
+    },
+    "GodinaOtvaranja": 2000,
+    "CenaMesec": 2500,
+    "CenaGodina": 30000,
+    "CenaTrening": 500,
+    "CenaGrupniTrening": 750,
+    "CenaPersonalniTrening": 1500
+  },
+  {
+    "Naziv": "X Gym",
+    "Adresa": {
+      "Ulica": "Cirpanova",
+      "Broj": "26",
+      "Grad": "Novi Sad",
+      "PostanskiBroj": 21000
+    },
+    "GodinaOtvaranja": 2000,
+    "CenaMesec": 2500,
+    "CenaGodina": 30000,
+    "CenaTrening": 500,
+    "CenaGrupniTrening": 750,
+    "CenaPersonalniTrening": 1500
+  }
+]

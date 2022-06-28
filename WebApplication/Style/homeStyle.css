@@ -1,0 +1,37 @@
+﻿.naslov {
+    font-size: 1.2em;
+    font-family: sans-serif;
+    text-align:center
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin-left: 40%;
+    margin-right: 40%;
+    position: absolute;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 8px 11px;
+    background-color: #b6ff00;
+}
+.styled-table tbody tr {
+    border-bottom: thin solid #000000;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #1de6c7;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #000000;
+}

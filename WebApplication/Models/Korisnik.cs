@@ -25,22 +25,6 @@ namespace WebApplication.Models
 
         }
 
-        public Korisnik()
-        {
-            KorisnickoIme = "";
-            Lozinka = "";
-            Ime = "";
-            Prezime = "";
-            Pol = Pol.MUSKI;
-            Email = "";
-            DatumRodjenja = new DateTime();
-            Uloga = Uloga.POSETILAC;
-            FitnesCentarTrener = new FitnesCentar();
-            FitnesCentarVlasnik = new FitnesCentar();
-            GrupniTreninziPosetilac = new List<GrupniTrening>();
-            GrupniTreninziTrener = new List<GrupniTrening>();
-        }
-
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
         public string Ime { get; set; }
