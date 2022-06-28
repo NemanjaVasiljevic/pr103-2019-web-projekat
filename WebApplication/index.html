@@ -9,14 +9,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             loadGyms();
-
             function loadGyms() {
                 $.get("/api/Teretana", function (data, status) {
+                    data.sort((a, b) => a.Naziv.localeCompare(b.Naziv))
                     let table = '<table>';
                     table += '<tr><th>Naziv</th><th>Adresa</th><th>Godina otvaranja</th><th></th></tr>';
                     for (element in data) {
                         let teretana = '<td>' + data[element].Naziv + '</td>';
-                        teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + '</td>';
+                        teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
                         teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
                         teretana += '<td><input type="submit" value="Detalji"/></td>';
                         table += '<tr> ' + teretana + '</tr>';
@@ -27,11 +27,55 @@
             }
         }
         );
+        /*function SortByNameDesc() {
+            $.get("/api/Teretana", function (data, status) {
+                data.sort((a, b) => a.Naziv.localeCompare(b.Naziv))
+                let table = '<table>';
+                table += '<tr><th>Naziv</th><th>Adresa</th><th>Godina otvaranja</th><th></th></tr>';
+                for (element in data) {
+                    let teretana = '<td>' + data[element].Naziv + '</td>';
+                    teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
+                    teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
+                    teretana += '<td><input type="submit" value="Detalji"/></td>';
+                    table += '<tr> ' + teretana + '</tr>';
+                }
+                table += '</table>';
+                $('#content').html(table);
+                        );
+        }
+        $("btnSortNameDesc").click(SortByNameDesc());*/
+        
     </script>
 </head>
 <body>
-    <h3 class="naslov">Fintes centri</h3>
-    <div id="content" class="styled-table"></div>
+    <nav class="navbar">
+        <div class="logo">Fitnes Centri</div>
+        <ul class="nav-links">
+            <div class="menu">
+                <li>
+                    <form>
+                        <input type="text" name="username" placeholder="Enter your username" />
+                        <input type="password" name="password" placeholder="Enter your password" />
+                    </form>
+                </li>
+                <li><a href="/">Login</a></li>
+                <li><a href="/">Register</a></li>
+                <li><a href="/">Profile</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div id="content" class="styled-table">
+    </div>
 
+    <div id="sortBlock">
+        <button id="btnSortNameAsc">Sortiraj po imenu rastuce</button>
+        <button id="btnSortNameDesc">Sortiraj po imenu opadajuce</button>
+        <button id="btnSortAddressAsc">Sortiraj po adresi rastuce</button>
+        <button id="btnSortAddressDesc">Sortiraj po adresi opadajuce</button>
+        <button id="btnSortGodiniAsc">Sortiraj po godini rastuce</button>
+        <button id="btnSortGodiniDesc">Sortiraj po godini opadajuce</button>
+
+    </div>
+    
 </body>
 </html>

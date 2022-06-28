@@ -20,7 +20,7 @@ namespace WebApplication
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
-            
+            HttpContext.Current.Application["teretane"] = new List<FitnesCentar>();
         }
     }
 }
