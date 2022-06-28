@@ -178,6 +178,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\sNdKfYp6L2Yl0Eh1VV0iCEbsJedE_F-qM-JPSIeqRoc.jpg" />
+    <Content Include="Images\thumb-1920-387340.jpg" />
     <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
