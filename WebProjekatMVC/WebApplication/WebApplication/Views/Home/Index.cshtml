@@ -1,0 +1,78 @@
+﻿@using WebApplication.Models
+@model List<FitnesCentar>
+@{
+    ViewBag.Title = "Home Page";
+}
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h2>Fitnes centri</h2>
+    <table border="1">
+        <tr>
+            <th>Naziv</th>
+            <th>Adresa</th>
+            <th>Godina otvaranja</th>
+            <th></th>
+        </tr>
+        @foreach (FitnesCentar fc in Model)
+        {
+            <tr>
+                <td>@fc.Naziv</td>
+                <td>@fc.Adresa.ToString()</td>
+                <td>@fc.GodinaOtvaranja</td>
+                <td>
+                    <input type="submit" value="Detalji" />
+                </td>
+            </tr>
+        }
+    </table>
+    <br /><br /><br />
+    <form action="~/Home/SortByNameAsc">
+        <input type="submit" value="Sortiraj po imenu rastuce" />
+    </form>
+    <form action="~/Home/SortByNameDesc">
+        <input type="submit" value="Sortiraj po imenu opadajuce" />
+    </form>
+
+    <form action="~/Home/SortByAddressAsc">
+        <input type="submit" value="Sortiraj po adresi rastuce" />
+    </form>
+    <form action="~/Home/SortByAddressDesc">
+        <input type="submit" value="Sortiraj po adresi opadajuce" />
+    </form>
+
+    <form action="~/Home/SortByYearAsc">
+        <input type="submit" value="Sortiraj po godini rastuce" />
+    </form>
+    <form action="~/Home/SortByYearDesc">
+        <input type="submit" value="Sortiraj po godini opadajuce" />
+    </form>
+    <br /><br />
+    
+        <form action="~/Home/SearchByName">
+            <label for="searchByName">Search by name:</label>
+            <input type="text" name="Naziv" placeholder="Gym name" />
+            <button class="search-button" id="searchByName">Search</button>
+        </form>
+
+        <form action="~/Home/SearchByAddress">
+            <label for="searchByAddress">Search by address:</label>
+            <input type="text" id="Ulica" name="Ulica" placeholder="Ulica" />
+            <input type="text" id="Broj" name="Broj" placeholder="Broj" />
+            <input type="text" id="Grad" name="Grad" placeholder="Grad" />
+            <input type="text" id="PostanskiBroj" name="PostanskiBroj" placeholder="Postanski broj" />
+            <button class="search-button" id="searchByAddress">Search</button>
+        </form>
+
+        <form action="~/Home/SearchByYear">
+            <label for="searchByYear">Search by year:</label>
+            <input type="number" name="from" id="from" placeholder="From" />
+            <input type="number" name="to" id="to" placeholder="To" />
+            <button class="search-button" id="searchByYear">Search</button>
+        </form>
+
+</body>
+</html>
+

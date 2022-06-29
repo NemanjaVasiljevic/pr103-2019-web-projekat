@@ -233,6 +233,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="TextFiles\FitnesCentri.json" />
+    <Content Include="TextFiles\DefaultKorisnici.json" />
     <Content Include="TextFiles\Korisnici.json" />
   </ItemGroup>
   <ItemGroup>

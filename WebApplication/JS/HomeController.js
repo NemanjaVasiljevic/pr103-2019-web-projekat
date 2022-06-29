@@ -9,7 +9,7 @@
                 let teretana = '<td>' + data[element].Naziv + '</td>';
                 teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
             }
             table += '</table>';
@@ -25,7 +25,7 @@
                 let teretana = '<td>' + data[element].Naziv + '</td>';
                 teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
             }
             table += '</table>';
@@ -42,7 +42,7 @@
                 let teretana = '<td>' + data[element].Naziv + '</td>';
                 teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
             }
             table += '</table>';
@@ -58,7 +58,7 @@
                 let teretana = '<td>' + data[element].Naziv + '</td>';
                 teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
             }
             table += '</table>';
@@ -79,7 +79,7 @@
                 let teretana = '<td>' + data[element].Naziv + '</td>';
                 teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
             }
             table += '</table>';
@@ -100,7 +100,7 @@
                 let teretana = '<td>' + data[element].Naziv + '</td>';
                 teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
             }
             table += '</table>';
@@ -119,7 +119,7 @@
             let teretana = '<td>' + result.Naziv + '</td>';
             teretana += '<td>' + result.Adresa.Ulica + ' ' + result.Adresa.Broj + ', ' + result.Adresa.Grad + '</td>';
             teretana += '<td>' + result.GodinaOtvaranja + '</td>';
-            teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+            teretana += '<td><button class="btn">Detalji</button></td>';
             table += '<tr> ' + teretana + '</tr>';
 
             table += '</table>';
@@ -144,7 +144,7 @@
             let teretana = '<td>' + result.Naziv + '</td>';
             teretana += '<td>' + result.Adresa.Ulica + ' ' + result.Adresa.Broj + ', ' + result.Adresa.Grad + '</td>';
             teretana += '<td>' + result.GodinaOtvaranja + '</td>';
-            teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+            teretana += '<td><button class="btn">Detalji</button></td>';
             table += '<tr> ' + teretana + '</tr>';
 
             table += '</table>';
@@ -167,7 +167,7 @@
                 let teretana = '<td>' + result[element].Naziv + '</td>';
                 teretana += '<td>' + result[element].Adresa.Ulica + ' ' + result[element].Adresa.Broj + ', ' + result[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + result[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
             }
             table += '</table>';
@@ -190,7 +190,7 @@ function loadGyms() {
             let teretana = '<td>' + data[element].Naziv + '</td>';
             teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
             teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
-            teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+            teretana += '<td><button class="btn">Detalji</button></td>';
             table += '<tr> ' + teretana + '</tr>';
         }
         table += '</table>';
@@ -209,7 +209,7 @@ function loadGyms() {
                 let teretana = '<td>' + result[element].Naziv + '</td>';
                 teretana += '<td>' + result[element].Adresa.Ulica + ' ' + result[element].Adresa.Broj + ', ' + result[element].Adresa.Grad + '</td>';
                 teretana += '<td>' + result[element].GodinaOtvaranja + '</td>';
-                teretana += '<td><input type="submit" class="btn" value="Detalji"/></td>';
+                teretana += '<td><button class="btn">Detalji</button></td>';
                 table += '<tr> ' + teretana + '</tr>';
 
                 table += '</table>';
