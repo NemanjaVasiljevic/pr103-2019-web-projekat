@@ -1,0 +1,166 @@
+[
+  {
+    "Naziv": "Grupa kod Juce",
+    "TipTreninga": "Yoga",
+    "Fitnes_centar": {
+      "Naziv": "X Gym",
+      "Adresa": {
+        "Ulica": "Cirpanova",
+        "Broj": "26",
+        "Grad": "Novi Sad",
+        "PostanskiBroj": 21000
+      },
+      "GodinaOtvaranja": 2000,
+      "Vlasnik": {
+        "KorisnickoIme": "Nemanja",
+        "Lozinka": "1234",
+        "Ime": "Nemanja",
+        "Prezime": "Vasiljevic",
+        "Pol": "MUSKI",
+        "Email": "nemus.vasiljevic@gmail.com",
+        "DatumRodjenja": "08/12/2000",
+        "Uloga": "VLASNIK",
+        "FitnesCentarVlasnik": {
+          "Naziv": "Spartan",
+          "Adresa": {
+            "Ulica": "Mite Balije",
+            "Broj": "69",
+            "Grad": "Novi Sad",
+            "PostanskiBroj": 21000
+          },
+          "GodinaOtvaranja": 1998,
+          "CenaMesec": 2500,
+          "CenaGodina": 30000,
+          "CenaTrening": 500,
+          "CenaGrupniTrening": 750,
+          "CenaPersonalniTrening": 1500
+        }
+      },
+      "CenaMesec": 2500,
+      "CenaGodina": 30000,
+      "CenaTrening": 500,
+      "CenaGrupniTrening": 750,
+      "CenaPersonalniTrening": 1500
+    },
+    "TrajanjeTreninga": "45:00",
+    "DatumTreninga": "08/12/2000 13:35",
+    "MaxPosetioci": "10",
+    "Posetioci": [
+      {
+        "KorisnickoIme": "rade",
+        "Lozinka": "1234",
+        "Ime": "Rade",
+        "Prezime": "Gade",
+        "Pol": 0,
+        "Email": "rade.com",
+        "DatumRodjenja": "2000-08-12T00:00:00",
+        "Uloga": 0,
+        "FitnesCentarTrener": null,
+        "FitnesCentarVlasnik": null,
+        "GrupniTreninziPosetilac": null,
+        "GrupniTreninziTrener": null
+      }
+    ]
+  },
+  {
+    "Naziv": "Grupa kod Buce",
+    "TipTreninga": "Les Milis",
+    "Fitnes_centar": {
+      "Naziv": "X Gym",
+      "Adresa": {
+        "Ulica": "Cirpanova",
+        "Broj": "26",
+        "Grad": "Novi Sad",
+        "PostanskiBroj": 21000
+      },
+      "GodinaOtvaranja": 2000,
+      "Vlasnik": {
+        "KorisnickoIme": "Nemanja",
+        "Lozinka": "1234",
+        "Ime": "Nemanja",
+        "Prezime": "Vasiljevic",
+        "Pol": "MUSKI",
+        "Email": "nemus.vasiljevic@gmail.com",
+        "DatumRodjenja": "08/12/2000",
+        "Uloga": "VLASNIK",
+        "FitnesCentarVlasnik": {
+          "Naziv": "Spartan",
+          "Adresa": {
+            "Ulica": "Mite Balije",
+            "Broj": "69",
+            "Grad": "Novi Sad",
+            "PostanskiBroj": 21000
+          },
+          "GodinaOtvaranja": 1998,
+          "CenaMesec": 2500,
+          "CenaGodina": 30000,
+          "CenaTrening": 500,
+          "CenaGrupniTrening": 750,
+          "CenaPersonalniTrening": 1500
+        }
+      },
+      "CenaMesec": 2500,
+      "CenaGodina": 30000,
+      "CenaTrening": 500,
+      "CenaGrupniTrening": 750,
+      "CenaPersonalniTrening": 1500
+    },
+    "TrajanjeTreninga": "60:00",
+    "DatumTreninga": "28/2/2024 07:35",
+    "MaxPosetioci": "4",
+    "Posetioci": [
+      {
+        "KorisnickoIme": "rade",
+        "Lozinka": "1234",
+        "Ime": "Rade",
+        "Prezime": "Gade",
+        "Pol": 0,
+        "Email": "rade.com",
+        "DatumRodjenja": "2000-08-12T00:00:00",
+        "Uloga": 0,
+        "FitnesCentarTrener": null,
+        "FitnesCentarVlasnik": null,
+        "GrupniTreninziPosetilac": null,
+        "GrupniTreninziTrener": null
+      }
+    ]
+  },
+  {
+    "Naziv": "Grupa kod Buce",
+    "TipTreninga": "Body Pump",
+    "Fitnes_centar": {
+      "Naziv": "Spartan",
+      "Adresa": {
+        "Ulica": "Mite Balije",
+        "Broj": "69",
+        "Grad": "Novi Sad",
+        "PostanskiBroj": 21000
+      },
+      "GodinaOtvaranja": 1998,
+      "CenaMesec": 2500,
+      "CenaGodina": 30000,
+      "CenaTrening": 500,
+      "CenaGrupniTrening": 750,
+      "CenaPersonalniTrening": 1500
+    },
+    "TrajanjeTreninga": "30:00",
+    "DatumTreninga": "06/07/2022 09:00",
+    "MaxPosetioci": "20",
+    "Posetioci": [
+      {
+        "KorisnickoIme": "rade",
+        "Lozinka": "1234",
+        "Ime": "Rade",
+        "Prezime": "Gade",
+        "Pol": 0,
+        "Email": "rade.com",
+        "DatumRodjenja": "2000-08-12T00:00:00",
+        "Uloga": 0,
+        "FitnesCentarTrener": null,
+        "FitnesCentarVlasnik": null,
+        "GrupniTreninziPosetilac": null,
+        "GrupniTreninziTrener": null
+      }
+    ]
+  }
+]

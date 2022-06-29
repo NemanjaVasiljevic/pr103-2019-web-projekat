@@ -1,0 +1,19 @@
+[
+  {
+    "KorisnickoIme": "rade",
+    "Lozinka": "1234",
+    "Ime": "Rade",
+    "Prezime": "Gade",
+    "Pol": 0,
+    "Email": "rade.com",
+    "DatumRodjenja": "08/12/2000",
+    "Uloga": 0,
+    "FitnesCentarTrener": null,
+    "FitnesCentarVlasnik": null,
+    "GrupniTreninziPosetilac": null,
+    "GrupniTreninziTrener": null
+  },
+  {
+
+  }
+]

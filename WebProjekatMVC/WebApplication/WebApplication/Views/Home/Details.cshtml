@@ -1,0 +1,44 @@
+﻿@using WebApplication.Models
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.teretana.Naziv</h2>
+<div>
+    <p>Gde nas mozete naci: @ViewBag.teretana.Adresa.ToString()</p>
+    <p>Kad smo osnovani: @ViewBag.teretana.GodinaOtvaranja</p>
+    <p>Vlasnik: @ViewBag.teretana.Vlasnik.Ime</p>
+    <p>Mesecna clanarina: @ViewBag.teretana.CenaMesec din</p>
+    <p>Godisnja clanarina: @ViewBag.teretana.CenaGodina din</p>
+    <p>Cena jednog treninga: @ViewBag.teretana.CenaTrening</p>
+    <p>Cena grupnog treninga: @ViewBag.teretana.CenaGrupniTrening</p>
+    <p>Cena personalnog treninga: @ViewBag.teretana.CenaPersonalniTrening</p>
+
+
+    <table border="1">
+        <tr>
+            <th>Naziv</th>
+            <th>Tip treninga</th>
+            <th>Fitnes centar</th>
+            <th>Trajanje treninga</th>
+            <th>Datum i vreme</th>
+            <th>Maksimalan broj posetilaca</th>
+            <th>Broj prijavljenih korisnika na trening</th>
+
+        </tr>
+        @foreach (GrupniTrening item in ViewBag.grupniTreninzi)
+        {
+            <tr>
+                <td>@item.Naziv</td>
+                <td>@item.TipTreninga</td>
+                <td>@item.Fitnes_centar.Naziv</td>
+                <td>@item.TrajanjeTreninga</td>
+                <td>@item.DatumTreninga</td>
+                <td>@item.MaxPosetioci</td>
+                <td>@item.Posetioci.Count</td>
+
+            </tr>
+        }
+    </table>
+</div>
+

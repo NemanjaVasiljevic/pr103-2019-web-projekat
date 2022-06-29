@@ -24,6 +24,45 @@ namespace WebApplication.Controllers
             }
         }
 
+        public ActionResult Profil()
+        {
+            Korisnik k = (Korisnik)Session["user"];
+            if(k == null)
+            {
+                ViewBag.message = "Ulogujte se da biste mogli pogledati profil";
+                return RedirectToAction("Index", "RegLog");
+            }
+            ViewBag.korisnik = k;
+            return View();
+        }
+
+        public ActionResult Details(string fc)
+        {
+            FitnesCentar teretana = null;
+            List<FitnesCentar> teretane = FitnesCentar.ReadFromJson();
+            List<GrupniTrening> grupniTreninzi = GrupniTrening.ReadFromJson();
+            List<GrupniTrening> spisakTreninga = new List<GrupniTrening>();
+
+            foreach (GrupniTrening x in grupniTreninzi)
+            {
+                if (x.Fitnes_centar.Naziv.Equals(fc))
+                {
+                    spisakTreninga.Add(x);
+                }
+            }
+
+            foreach (FitnesCentar x in teretane)
+            {
+                if(x.Naziv == fc)
+                {
+                    teretana = x;
+                }
+            }
+            ViewBag.teretana = teretana;
+            ViewBag.grupniTreninzi = spisakTreninga;
+            return View();
+        }
+
         public ActionResult SortByNameAsc()
         {
             List<FitnesCentar> teretane = FitnesCentar.ReadFromJson();

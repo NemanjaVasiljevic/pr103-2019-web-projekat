@@ -5,7 +5,7 @@
 }
 <html>
 <head>
-    <title></title>
+    <title>FitApp</title>
 </head>
 <body>
     <h2>Fitnes centri</h2>
@@ -23,7 +23,7 @@
                 <td>@fc.Adresa.ToString()</td>
                 <td>@fc.GodinaOtvaranja</td>
                 <td>
-                    <input type="submit" value="Detalji" />
+                    <a href="~/Home/Details?fc=@fc.Naziv">Details</a>
                 </td>
             </tr>
         }

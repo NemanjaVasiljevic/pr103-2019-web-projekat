@@ -171,10 +171,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="TextFiles\FitnesCentri.json" />
+    <Content Include="Views\RegLog\Login.cshtml" />
+    <Content Include="TextFiles\Korisnici.json" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\RegLog\Register.cshtml" />
+    <Content Include="TextFiles\GrupniTreninzi.json" />
+    <Content Include="Views\Home\Profil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\RegLog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
