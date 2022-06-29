@@ -53,7 +53,7 @@ namespace WebApplication.Models
             List<Korisnik> korisnici = new List<Korisnik>();
 
             string jsonFromFile;
-            using (var reader = new StreamReader("D:\\Faks\\WEB\\WebApplication\\WebApplication\\TextFiles\\Korisnici.json"))
+            using (var reader = new StreamReader("C:\\Users\\Nemanja\\Desktop\\WebProjekat\\pr103-2019-web-projekat\\WebApplication\\TextFiles\\Korisnici.json"))
             {
                 jsonFromFile = reader.ReadToEnd();
             }
@@ -76,7 +76,7 @@ namespace WebApplication.Models
         public static void WriteToJson(Korisnik k)
         {
             var jsonToWrite = JsonConvert.SerializeObject(k);
-            using (var writer = new StreamWriter("D:\\Faks\\WEB\\WebApplication\\WebApplication\\TextFiles\\Korisnici.json"))
+            using (var writer = new StreamWriter("C:\\Users\\Nemanja\\Desktop\\WebProjekat\\pr103-2019-web-projekat\\WebApplication\\TextFiles\\Korisnici.json"))
             {
                 writer.Write(jsonToWrite);
             }

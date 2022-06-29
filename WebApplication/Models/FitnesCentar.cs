@@ -38,7 +38,7 @@ namespace WebApplication.Models
             List<FitnesCentar> teretane = new List<FitnesCentar>();
 
             string jsonFromFile;
-            using (var reader = new StreamReader("D:\\Faks\\WEB\\WebApplication\\WebApplication\\TextFiles\\FitnesCentri.json"))
+            using (var reader = new StreamReader("C:\\Users\\Nemanja\\Desktop\\WebProjekat\\pr103-2019-web-projekat\\WebApplication\\TextFiles\\FitnesCentri.json"))
             {
                 jsonFromFile = reader.ReadToEnd();
             }
