@@ -43,5 +43,35 @@
     "CenaTrening": 100,
     "CenaGrupniTrening": 500,
     "CenaPersonalniTrening": 750
+  },
+  {
+    "Naziv": "NonStop Fitness",
+    "Adresa": {
+      "Ulica": "Mihajla Pupina",
+      "Broj": "32",
+      "Grad": "Beograd",
+      "PostanskiBroj": 22000
+    },
+    "GodinaOtvaranja": 2020,
+    "CenaMesec": 3000,
+    "CenaGodina": 36000,
+    "CenaTrening": 700,
+    "CenaGrupniTrening": 1000,
+    "CenaPersonalniTrening": 4000
+  },
+  {
+    "Naziv": "Prime",
+    "Adresa": {
+      "Ulica": "Modene",
+      "Broj": "18c",
+      "Grad": "Novi Sad",
+      "PostanskiBroj": 21000
+    },
+    "GodinaOtvaranja": 2017,
+    "CenaMesec": 2600,
+    "CenaGodina": 30000,
+    "CenaTrening": 500,
+    "CenaGrupniTrening": 800,
+    "CenaPersonalniTrening": 3500
   }
 ]

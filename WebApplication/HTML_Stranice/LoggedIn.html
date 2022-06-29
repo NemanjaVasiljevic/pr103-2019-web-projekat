@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>FitApp</title>
+    <link rel="stylesheet" href="/Style/homeStyle.css">
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loadGyms();
+            function loadGyms() {
+                $.get("/api/Teretana", function (data, status) {
+                    data.sort((a, b) => a.Naziv.localeCompare(b.Naziv))
+                    let table = '<table>';
+                    table += '<tr><th>Naziv</th><th>Adresa</th><th>Godina otvaranja</th><th></th></tr>';
+                    for (element in data) {
+                        let teretana = '<td>' + data[element].Naziv + '</td>';
+                        teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
+                        teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
+                        teretana += '<td><input type="submit" value="Detalji"/></td>';
+                        table += '<tr> ' + teretana + '</tr>';
+                    }
+                    table += '</table>';
+                    $('#content').html(table);
+                });
+            }
+        }
+        );
+        /*function SortByNameDesc() {
+            $.get("/api/Teretana", function (data, status) {
+                data.sort((a, b) => a.Naziv.localeCompare(b.Naziv))
+                let table = '<table>';
+                table += '<tr><th>Naziv</th><th>Adresa</th><th>Godina otvaranja</th><th></th></tr>';
+                for (element in data) {
+                    let teretana = '<td>' + data[element].Naziv + '</td>';
+                    teretana += '<td>' + data[element].Adresa.Ulica + ' ' + data[element].Adresa.Broj + ', ' + data[element].Adresa.Grad + '</td>';
+                    teretana += '<td>' + data[element].GodinaOtvaranja + '</td>';
+                    teretana += '<td><input type="submit" value="Detalji"/></td>';
+                    table += '<tr> ' + teretana + '</tr>';
+                }
+                table += '</table>';
+                $('#content').html(table);
+                        );
+        }
+        $("btnSortNameDesc").click(SortByNameDesc());*/
+
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Fitnes Centri</div>
+        <ul class="nav-links">
+            <div class="menu">
+                <li><a href="/index.html">Logout</a></li>
+                <li><a href="/">Profile</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div id="content" class="styled-table">
+    </div>
+
+    <div class="sortBlock">
+        <button class="btn" id="btnSortNameAsc">Sortiraj po imenu rastuce</button>
+        <button class="btn" id="btnSortNameDesc">Sortiraj po imenu opadajuce</button>
+        <button class="btn" id="btnSortAddressAsc">Sortiraj po adresi rastuce</button>
+        <button class="btn" id="btnSortAddressDesc">Sortiraj po adresi opadajuce</button>
+        <button class="btn" id="btnSortGodiniAsc">Sortiraj po godini rastuce</button>
+        <button class="btn" id="btnSortGodiniDesc">Sortiraj po godini opadajuce</button>
+
+    </div>
+
+</body>
+</html>

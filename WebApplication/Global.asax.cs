@@ -21,6 +21,8 @@ namespace WebApplication
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             HttpContext.Current.Application["teretane"] = new List<FitnesCentar>();
+            HttpContext.Current.Application["users"] = new List<Korisnik>();
+
         }
     }
 }
