@@ -12,25 +12,24 @@ namespace WebApplication.Controllers
     public class RegLogController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Login(string username, string password)
+        public void Login(string username, string password)
         {
-            List<Korisnik> korisnici = (List<Korisnik>)HttpContext.Current.Application["users"];
+            List<Korisnik> korisnici = Korisnik.ReadFromJson();
 
-            foreach (var x in korisnici)
+            /*foreach (var x in korisnici)
             {
                 if(x.KorisnickoIme.Equals(username) && x.Lozinka.Equals(password))
                 {
                     return Ok();
                 }
-            }
-
-            return BadRequest();
+            }*/
+            Korisnik.WriteToJson(new Korisnik(username,password));
         }
 
         [HttpPost]
         public IHttpActionResult Register(Korisnik k)
         {
-            List<Korisnik> korisnici = (List<Korisnik>)HttpContext.Current.Application["users"];
+            List<Korisnik> korisnici = Korisnik.ReadFromJson();
 
             if (korisnici.Contains(k))
             {
@@ -38,7 +37,7 @@ namespace WebApplication.Controllers
             }
             else
             {
-                korisnici.Add(k);
+                Korisnik.WriteToJson(k);
                 return Ok(k);
             }
         }

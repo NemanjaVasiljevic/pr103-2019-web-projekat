@@ -180,6 +180,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="HTML_Stranice\LoggedIn.html" />
+    <Content Include="HTML_Stranice\Registration.html" />
     <Content Include="Images\sNdKfYp6L2Yl0Eh1VV0iCEbsJedE_F-qM-JPSIeqRoc.jpg" />
     <Content Include="Images\thumb-1920-387340.jpg" />
     <Content Include="Images\wallpapersden.com_arnold-schwarzenegger-bodybuilding-poster_1600x900.jpg" />

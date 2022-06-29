@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using WebApplication.Models.Enums;
@@ -25,6 +27,12 @@ namespace WebApplication.Models
 
         }
 
+        public Korisnik(string username, string password)
+        {
+            KorisnickoIme = username;
+            Lozinka = password;
+        }
+
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
         public string Ime { get; set; }
@@ -40,8 +48,39 @@ namespace WebApplication.Models
 
 
 
+        public static List<Korisnik> ReadFromJson()
+        {
+            List<Korisnik> korisnici = new List<Korisnik>();
 
+            string jsonFromFile;
+            using (var reader = new StreamReader("D:\\Faks\\WEB\\WebApplication\\WebApplication\\TextFiles\\Korisnici.json"))
+            {
+                jsonFromFile = reader.ReadToEnd();
+            }
+            try
+            {
+                List<Korisnik> users = JsonConvert.DeserializeObject<List<Korisnik>>(jsonFromFile);
+                foreach (var x in users)
+                {
+                    korisnici.Add(x);
+                }
+                return korisnici;
+            }
+            catch
+            {
+                return korisnici;
+            }
 
+        }
+
+        public static void WriteToJson(Korisnik k)
+        {
+            var jsonToWrite = JsonConvert.SerializeObject(k);
+            using (var writer = new StreamWriter("D:\\Faks\\WEB\\WebApplication\\WebApplication\\TextFiles\\Korisnici.json"))
+            {
+                writer.Write(jsonToWrite);
+            }
+        }
 
 
 
