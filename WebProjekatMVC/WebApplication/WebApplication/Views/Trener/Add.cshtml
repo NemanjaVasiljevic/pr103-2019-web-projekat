@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Dodavanje nove grupe</h2>
+<h3>@ViewBag.message</h3>
+<form action="~/Trener/AddGroup" method="post">
+    <table>
+        <tr>
+            <td>Naziv:</td>
+            <td><input type="text" name="Naziv" placeholder="Unesite naziv" /></td>
+        </tr>
+        <tr>
+            <td>Tip treninga:</td>
+            <td><input type="text" name="TipTreninga" placeholder="Unesite tip treninga" /></td>
+        </tr>
+        <tr>
+            <td>Naziv fitnes centra u kome se odrzava:</td>
+            <td><input type="text" name="Fitnes_centar" placeholder="Unesite naziv centra" /></td>
+        </tr>
+        <tr>
+            <td>Trajanje treninga:</td>
+            <td><input type="text" name="TrajanjeTreninga" placeholder="Unesite trajanje treninga" /></td>
+        </tr>
+        <tr>
+            <td>Datum treninga:</td>
+            <td><input type="text" name="DatumTreninga" placeholder="Unesite datum treninga" /></td>
+        </tr>
+        <tr>
+            <td>Vreme treninga:</td>
+            <td><input type="text" name="VremeTreninga" placeholder="Unesite vreme kada pocinje" /></td>
+        </tr>
+        <tr>
+            <td>Maksimalan broj posetioca:</td>
+            <td><input type="number" name="MaxPosetioci" placeholder="Unesite maksimalan broj posetioca" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Dodaj" />
+            </td>
+        </tr>
+    </table>
+</form>

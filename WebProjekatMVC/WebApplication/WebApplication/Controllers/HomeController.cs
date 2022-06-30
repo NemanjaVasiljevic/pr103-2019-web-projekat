@@ -56,7 +56,7 @@ namespace WebApplication.Controllers
 
             foreach (GrupniTrening x in grupniTreninzi)
             {
-                if (x.Fitnes_centar.Naziv.Equals(fc))
+                if (x.Fitnes_centar.Equals(fc))
                 {
                     spisakTreninga.Add(x);
                 }

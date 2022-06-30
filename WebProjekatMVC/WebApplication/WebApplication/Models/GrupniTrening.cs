@@ -13,7 +13,8 @@ namespace WebApplication.Models
         {
 
         }
-        public GrupniTrening(string naziv, string tipTreninga, FitnesCentar fitnes_centar, string trajanjeTreninga, string datumTreninga, string vremeTreninga, int maxPosetioci)
+
+        public GrupniTrening(string naziv, string tipTreninga, string fitnes_centar, string trajanjeTreninga, string datumTreninga, string vremeTreninga, int maxPosetioci)
         {
             Naziv = naziv;
             TipTreninga = tipTreninga;
@@ -27,7 +28,7 @@ namespace WebApplication.Models
 
         public string Naziv { get; set; }
         public string TipTreninga { get; set; }
-        public FitnesCentar Fitnes_centar { get; set; }
+        public string Fitnes_centar { get; set; }
         public string TrajanjeTreninga { get; set; }
         public string DatumTreninga { get; set; }
         public string VremeTreninga { get; set; }

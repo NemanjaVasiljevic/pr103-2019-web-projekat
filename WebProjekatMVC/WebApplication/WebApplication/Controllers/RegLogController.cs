@@ -10,6 +10,12 @@ namespace WebApplication.Controllers
     public class RegLogController : Controller
     {
         public ActionResult Index(){
+            Korisnik k = (Korisnik)Session["user"];
+            if (k != null)
+            {
+                ViewBag.message = $"Vec ste ulogovani kao {k.KorisnickoIme}";
+                return View("Notification");
+            }
             return View("Login");
         }
 
@@ -48,7 +54,8 @@ namespace WebApplication.Controllers
 
         public ActionResult Login(string username, string password)
         {
-            if(username.Equals(String.Empty) || username.Equals(String.Empty))
+           
+                if (username.Equals(String.Empty) || username.Equals(String.Empty))
             {
                 ViewBag.message = "Sva polja moraju biti popunjena";
                 return View("Login");
