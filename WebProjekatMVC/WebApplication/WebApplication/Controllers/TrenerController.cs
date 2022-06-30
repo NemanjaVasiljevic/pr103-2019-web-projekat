@@ -15,6 +15,7 @@ namespace WebApplication.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult AddGroup(GrupniTrening gt)
         {
             bool nasao = false;
@@ -77,6 +78,26 @@ namespace WebApplication.Controllers
             Korisnik.WriteToJson(allUsers);
 
             return RedirectToAction("Profil","Home");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteGroup(string naziv)
+        {
+            Korisnik k = (Korisnik)Session["user"];
+            List<Korisnik> korisnici = Korisnik.ReadFromJson();
+
+
+            foreach (GrupniTrening x in k.GrupniTreninziTrener)
+            {
+                if (x.Naziv.Equals(naziv))
+                {
+                    k.GrupniTreninziTrener.Remove(x);
+                    break;
+                }
+            }
+
+
+            return RedirectToAction("IndexDel", "GrupniTreninzi", new { korisnik = k });
         }
     }
 }

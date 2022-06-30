@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "EditProfil";
+}
+
+<h2>Edit</h2>
+<form action="~/Home/Edit">
+    <table>
+        <tr>
+            <td>Korisnicko ime:</td>
+            <td><input type="text" name="KorisnickoIme" placeholder="Unesite korisnicko ime" /></td>
+        </tr>
+        <tr>
+            <td>Lozinka:</td>
+            <td><input type="password" name="Lozinka" placeholder="Unesite lozinku" /></td>
+        </tr>
+        <tr>
+            <td>Ime:</td>
+            <td><input type="text" name="Ime" placeholder="Unesite ime" /></td>
+        </tr>
+        <tr>
+            <td>Prezime:</td>
+            <td><input type="text" name="Prezime" placeholder="Unesite prezime" /></td>
+        </tr>
+        <tr>
+            <td>Pol:</td>
+            <td>
+                <input list="Pol" name="Pol" />
+                <datalist id="Pol">
+                    <option value="MUSKI"></option>
+                    <option value="ZENSKI"></option>
+                </datalist>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="Email" placeholder="Unesite email" /></td>
+        </tr>
+        <tr>
+            <td>Datum rodjenja:</td>
+            <td><input type="text" name="DatumRodjenja" placeholder="dd/MM/yyyy" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Confirm changes" />
+            </td>
+        </tr>
+    </table>
+</form>

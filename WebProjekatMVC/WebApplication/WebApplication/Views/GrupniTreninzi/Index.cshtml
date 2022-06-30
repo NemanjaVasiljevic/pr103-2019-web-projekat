@@ -4,6 +4,10 @@
     ViewBag.Title = "Index";
 }
 <br />
+    <form action="~/Home/EditProfil">
+        <input type="submit" value="Izmeni profil" />
+    </form>
+<br />
 <div>
     <p>Korisnicko ime: @ViewBag.korisnik.KorisnickoIme</p>
     <p>Ime: @ViewBag.korisnik.Ime</p>
@@ -130,7 +134,10 @@
                         <div>
                             <input type="submit" name="mod" value="Modifikuj" />
                             <input type="submit" name="list" value="Pogledaj prijavljene" />
-                            <input type="submit" name="delete" value="Obrisi" />
+
+                            <form action="~/Trener/DeleteGroup?naziv=@item.Naziv" method="post">
+                                <input type="submit" name="delete" value="Obrisi" />
+                            </form>
                         </div>
                     </td>
                 </tr>

@@ -50,28 +50,41 @@
         <input type="submit" value="Sortiraj po godini opadajuce" />
     </form>
     <br /><br />
-    
-        <form action="~/Home/SearchByName">
-            <label for="searchByName">Search by name:</label>
-            <input type="text" name="Naziv" placeholder="Gym name" />
-            <button class="search-button" id="searchByName">Search</button>
-        </form>
 
-        <form action="~/Home/SearchByAddress">
-            <label for="searchByAddress">Search by address:</label>
+    <form action="~/Home/SearchByName">
+        <label for="searchByName">Search by name:</label>
+        <input type="text" name="Naziv" placeholder="Gym name" />
+        <button class="search-button" id="searchByName">Search</button>
+    </form>
+
+    <form action="~/Home/SearchByAddress">
+        <label for="searchByAddress">Search by address:</label>
+        <input type="text" id="Ulica" name="Ulica" placeholder="Ulica" />
+        <input type="text" id="Broj" name="Broj" placeholder="Broj" />
+        <input type="text" id="Grad" name="Grad" placeholder="Grad" />
+        <input type="text" id="PostanskiBroj" name="PostanskiBroj" placeholder="Postanski broj" />
+        <button class="search-button" id="searchByAddress">Search</button>
+    </form>
+
+    <form action="~/Home/SearchByYear">
+        <label for="searchByYear">Search by year:</label>
+        <input type="number" name="from" id="from" placeholder="From" />
+        <input type="number" name="to" id="to" placeholder="To" />
+        <button class="search-button" id="searchByYear">Search</button>
+    </form>
+
+    <p>Kombinovana pretraga</p>
+    <div>
+        <form action="~/Home/KombinovanaPretraga">
+            <input type="text" name="Naziv" placeholder="Naziv" />
             <input type="text" id="Ulica" name="Ulica" placeholder="Ulica" />
             <input type="text" id="Broj" name="Broj" placeholder="Broj" />
             <input type="text" id="Grad" name="Grad" placeholder="Grad" />
-            <input type="text" id="PostanskiBroj" name="PostanskiBroj" placeholder="Postanski broj" />
-            <button class="search-button" id="searchByAddress">Search</button>
-        </form>
-
-        <form action="~/Home/SearchByYear">
-            <label for="searchByYear">Search by year:</label>
             <input type="number" name="from" id="from" placeholder="From" />
             <input type="number" name="to" id="to" placeholder="To" />
-            <button class="search-button" id="searchByYear">Search</button>
+            <button class="search-button" id="kombinovanaPretraga">Pronadji</button>
         </form>
+    </div>
 
 </body>
 </html>

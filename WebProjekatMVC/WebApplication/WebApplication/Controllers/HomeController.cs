@@ -47,6 +47,52 @@ namespace WebApplication.Controllers
             }
         }
 
+        public ActionResult EditProfil()
+        {
+            return View();
+        }
+
+        public ActionResult Edit(Korisnik updated)
+        {
+            bool nasao = false;
+            List<Korisnik> allUsers = Korisnik.ReadFromJson();
+            Korisnik logged = (Korisnik)Session["user"];
+            int index = 0;
+            int foundIndex = 0;
+
+            foreach (Korisnik x in allUsers)
+            {
+                if(x.KorisnickoIme.Equals(logged.KorisnickoIme) && !nasao)
+                {
+                    logged = x;
+                    nasao = true;
+                    foundIndex = index;
+                }
+                if(updated.KorisnickoIme.Equals(x.KorisnickoIme) && !updated.KorisnickoIme.Equals(logged.KorisnickoIme))
+                {
+                    ViewBag.message = $"Nije moguca promena u korisnicko ime {updated.KorisnickoIme}, vec je zauzeto";
+                    return View("Notification");
+                }
+                if (updated.Email.Equals(x.Email) && !updated.Email.Equals(x.Email))
+                {
+                    ViewBag.message = $"Nije moguca promena mejla u {updated.Email}, vec je zauzeto";
+                    return View("Notification");
+                }
+                index++;
+            }
+
+            updated.GrupniTreninziPosetilac = logged.GrupniTreninziPosetilac;
+            updated.GrupniTreninziTrener = logged.GrupniTreninziTrener;
+            updated.FitnesCentarTrener = logged.FitnesCentarTrener;
+            updated.FitnesCentarVlasnik = logged.FitnesCentarVlasnik;
+
+            allUsers[foundIndex] = updated;
+            Korisnik.WriteToJson(allUsers);
+            Session["user"] = null;
+
+            return RedirectToAction("IndexProfil","RegLog");
+        }
+
         public ActionResult Details(string fc)
         {
             FitnesCentar teretana = null;
@@ -164,6 +210,23 @@ namespace WebApplication.Controllers
             foreach (FitnesCentar x in teretane)
             {
                 if (x.GodinaOtvaranja >= from && x.GodinaOtvaranja <= to)
+                {
+                    listaTeretana.Add(x);
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult KombinovanaPretraga(string Naziv, string Ulica, string Broj, string Grad, int from, int to)
+        {
+            listaTeretana.Clear();
+            List<FitnesCentar> teretane = FitnesCentar.ReadFromJson();
+            foreach (FitnesCentar x in teretane)
+            {
+                if (x.Naziv.Equals(Naziv) && x.Adresa.Ulica.Equals(Ulica) &&
+                    x.Adresa.Broj.Equals(Broj) && x.Adresa.Grad.Equals(Grad) &&
+                    x.GodinaOtvaranja >= from && x.GodinaOtvaranja <= to)
                 {
                     listaTeretana.Add(x);
                 }

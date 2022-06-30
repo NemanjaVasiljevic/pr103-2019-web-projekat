@@ -34,6 +34,29 @@ namespace WebApplication.Controllers
             return View();
         }
 
+        public ActionResult IndexDel(Korisnik korisnik)
+        {
+            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
+
+            Korisnik k = (Korisnik)Session["user"];
+            if (k == null)
+            {
+                ViewBag.message = "Ulogujte se da biste mogli pogledati profil";
+                return RedirectToAction("IndexProfil", "RegLog");
+            }
+            ViewBag.korisnik = k;
+            if (treninzi.Count == 0)
+            {
+                ViewBag.treninzi = sortirani;
+            }
+            else
+            {
+                ViewBag.treninzi = korisnik.GrupniTreninziTrener;
+            }
+
+            return View();
+        }
+
         public ActionResult SearchByNaziv(string naziv)
         {
             List<Korisnik> users = Korisnik.ReadFromJson();
