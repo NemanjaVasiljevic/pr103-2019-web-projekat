@@ -1,7 +1,7 @@
 ﻿@using WebApplication.Models
 
 @{
-    ViewBag.Title = "Profil";
+    ViewBag.Title = "Index";
 }
 <br />
 <div>
@@ -27,7 +27,7 @@
                 <th>Broj prijavljenih korisnika na trening</th>
 
             </tr>
-            @foreach (GrupniTrening item in ViewBag.korisnik.GrupniTreninziPosetilac)
+            @foreach (GrupniTrening item in ViewBag.treninzi)
             {
                 <tr>
                     <td align="center">@item.Naziv</td>
@@ -42,8 +42,8 @@
                 </tr>
             }
         </table>
-
         <br /><br />
+
         <form action="~/GrupniTreninzi/SearchByNaziv">
             <label for="searchByNaziv">Pretrazi po nazivu:</label>
             <input type="text" name="naziv" placeholder="Naziv" />
@@ -63,7 +63,6 @@
         </form>
         <br /><br />
 
-
         <p>Kombinovana pretraga</p>
         <div>
             <form action="~/GrupniTreninzi/KombinovanaPretraga">
@@ -73,7 +72,6 @@
                 <button class="search-button" id="kombinovanaPretraga">Pronadji</button>
             </form>
         </div>
-
 
         <br />
         <form action="~/GrupniTreninzi/SortByNazivAsc">
@@ -90,6 +88,7 @@
         <form action="~/GrupniTreninzi/SortByTipTreningaDesc">
             <input type="submit" name="tipTreninga" value="Sortiraj po tipu treninga opadajuce" />
         </form>
+
 
         <form action="~/GrupniTreninzi/SortByDatumAsc">
             <input type="submit" name="datum" value="Sortiraj po datumu rastuce" />
@@ -109,8 +108,7 @@
                 <th>Tip treninga</th>
                 <th>Fitnes centar</th>
                 <th>Trajanje treninga</th>
-                <th>Datum</th>
-                <th>Vreme</th>
+                <th>Datum i vreme</th>
                 <th>Maksimalan broj posetilaca</th>
                 <th>Broj prijavljenih korisnika na trening</th>
 
@@ -123,7 +121,6 @@
                     <td align="center">@item.Fitnes_centar.Naziv</td>
                     <td align="center">@item.TrajanjeTreninga min</td>
                     <td align="center">@item.DatumTreninga</td>
-                    <td align="center">@item.VremeTreninga</td>
                     <td align="center">@item.MaxPosetioci</td>
                     <td align="center">@item.Posetioci.Count</td>
 
@@ -141,4 +138,3 @@
         <p>Fitnes centar(vlasnik):</p>
     }
 </div>
-

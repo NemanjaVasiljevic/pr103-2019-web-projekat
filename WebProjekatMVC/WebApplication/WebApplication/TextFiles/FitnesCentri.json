@@ -88,6 +88,16 @@
       "PostanskiBroj": 13500
     },
     "GodinaOtvaranja": 1975,
+    "Vlasnik": {
+      "KorisnickoIme": "Jova",
+      "Lozinka": "1234",
+      "Ime": "Jova",
+      "Prezime": "Peric",
+      "Pol": "MUSKI",
+      "Email": "nemus.vasiljevic@gmail.com",
+      "DatumRodjenja": "13/02/1975",
+      "Uloga": "VLASNIK"    
+    },
     "CenaMesec": 1000,
     "CenaGodina": 12000,
     "CenaTrening": 100,
@@ -103,6 +113,16 @@
       "PostanskiBroj": 22000
     },
     "GodinaOtvaranja": 2020,
+    "Vlasnik": {
+      "KorisnickoIme": "Lela",
+      "Lozinka": "1234",
+      "Ime": "Lela",
+      "Prezime": "Dacic",
+      "Pol": "ZENSKI",
+      "Email": "nemus.vasiljevic@gmail.com",
+      "DatumRodjenja": "23/02/1991",
+      "Uloga": "VLASNIK"
+    },
     "CenaMesec": 3000,
     "CenaGodina": 36000,
     "CenaTrening": 700,
@@ -118,6 +138,16 @@
       "PostanskiBroj": 21000
     },
     "GodinaOtvaranja": 2017,
+    "Vlasnik": {
+      "KorisnickoIme": "Zika",
+      "Lozinka": "1234",
+      "Ime": "Zika",
+      "Prezime": "Stanimirovic",
+      "Pol": "MUSKI",
+      "Email": "nemus.vasiljevic@gmail.com",
+      "DatumRodjenja": "23/11/1956",
+      "Uloga": "VLASNIK"
+    },
     "CenaMesec": 2600,
     "CenaGodina": 30000,
     "CenaTrening": 500,

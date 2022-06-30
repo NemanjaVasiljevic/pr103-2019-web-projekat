@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebApplication.Models;
 
 namespace WebApplication
 {
@@ -16,6 +17,11 @@ namespace WebApplication
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            HttpContext.Current.Application["treninzi"] = new List<GrupniTrening>();
+            HttpContext.Current.Application["korisnici"] = new List<Korisnik>();
+            HttpContext.Current.Application["teretane"] = new List<FitnesCentar>();
+
+
         }
     }
 }

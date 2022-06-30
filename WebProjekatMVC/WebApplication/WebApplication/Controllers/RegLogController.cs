@@ -13,6 +13,17 @@ namespace WebApplication.Controllers
             return View("Login");
         }
 
+        public ActionResult IndexProfil()
+        {
+            Korisnik k = (Korisnik)Session["user"];
+            if (k == null)
+            {
+                ViewBag.message = "Ulogujte se da biste mogli pogledati profil";
+                return View("Login");
+            }
+            return View("Login");
+        }
+
         public ActionResult Register()
         {
             Korisnik k = new Korisnik();
@@ -25,7 +36,7 @@ namespace WebApplication.Controllers
             List<Korisnik> defaultKorisnici = Korisnik.ReadFromJson();
             if (defaultKorisnici.Contains(k))
             {
-                ViewBag.Message = $"User with {k.KorisnickoIme} already exists!";
+                ViewBag.Message = $"Korisnik {k.KorisnickoIme} vec postoji!";
                 return View();
             }
 
@@ -39,14 +50,14 @@ namespace WebApplication.Controllers
         {
             if(username.Equals(String.Empty) || username.Equals(String.Empty))
             {
-                ViewBag.message = "All fields must be filled";
+                ViewBag.message = "Sva polja moraju biti popunjena";
                 return View("Login");
             }
             List<Korisnik> defaultKorisnici = Korisnik.ReadFromJson();
             Korisnik user = defaultKorisnici.Find(u => u.KorisnickoIme.Equals(username) && u.Lozinka.Equals(password));
             if (user == null)
             {
-                ViewBag.Message = $"User with credentials does not exist!";
+                ViewBag.Message = $"Korisnik sa unetim korisnickim imenom i lozinkom ne postoji!";
                 return View("Login");
             }
 

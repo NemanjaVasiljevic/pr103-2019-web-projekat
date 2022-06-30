@@ -24,8 +24,8 @@ namespace WebApplication.Models
             Email = email;
             DatumRodjenja = datumRodjenja;
             Uloga = Uloga.POSETILAC;
-            FitnesCentarTrener = null;
-            FitnesCentarVlasnik = null;
+            FitnesCentarTrener = new FitnesCentar();
+            FitnesCentarVlasnik = new FitnesCentar();
             GrupniTreninziPosetilac = new List<GrupniTrening>();
             GrupniTreninziTrener = new List<GrupniTrening>();
 
@@ -54,19 +54,19 @@ namespace WebApplication.Models
             {
                 jsonFromFile = reader.ReadToEnd();
             }
-            try
-            {
+            //try
+            //{
                 List<Korisnik> users = JsonConvert.DeserializeObject<List<Korisnik>>(jsonFromFile);
                 foreach (var x in users)
                 {
                     korisnici.Add(x);
                 }
                 return korisnici;
-            }
-            catch
-            {
-                return korisnici;
-            }
+            //}
+            //catch
+            //{
+            //    return korisnici;
+            //}
 
         }
 

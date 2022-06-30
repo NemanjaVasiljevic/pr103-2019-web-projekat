@@ -24,6 +24,7 @@
             <th>Datum i vreme</th>
             <th>Maksimalan broj posetilaca</th>
             <th>Broj prijavljenih korisnika na trening</th>
+            <th>Prijavi se</th>
 
         </tr>
         @foreach (GrupniTrening item in ViewBag.grupniTreninzi)
@@ -36,7 +37,9 @@
                 <td>@item.DatumTreninga</td>
                 <td>@item.MaxPosetioci</td>
                 <td>@item.Posetioci.Count</td>
-
+                <td>
+                    <a href="~/Home/PrijaviSeZaGrupniTrening?naziv=@item.Naziv">Prijavi se</a>
+                </td>
             </tr>
         }
     </table>
