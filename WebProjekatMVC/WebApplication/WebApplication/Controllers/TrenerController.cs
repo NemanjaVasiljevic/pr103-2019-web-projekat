@@ -163,15 +163,16 @@ namespace WebApplication.Controllers
                 index++;
             }
 
-            /*try
+            try
             {
-                DateTime unetDatum = Convert.ToDateTime(gt.DatumTreninga);
+                string datum = gt.DatumTreninga;
+                DateTime unetDatum = Convert.ToDateTime(datum);
             }
             catch
             {
                 ViewBag.message = $"Uneti datum rodjenja je pogresnog formata";
                 return View("Notification");
-            }*/
+            }
 
             if(gt.MaxPosetioci < stariTrening.Posetioci.Count)
             {

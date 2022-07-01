@@ -21,7 +21,8 @@
             <th>Tip treninga</th>
             <th>Fitnes centar</th>
             <th>Trajanje treninga</th>
-            <th>Datum i vreme</th>
+            <th>Datum</th>
+            <th>Vreme</th>
             <th>Maksimalan broj posetilaca</th>
             <th>Broj prijavljenih korisnika na trening</th>
             <th>Prijavi se</th>
@@ -30,15 +31,20 @@
         @foreach (GrupniTrening item in ViewBag.grupniTreninzi)
         {
             <tr>
-                <td>@item.Naziv</td>
-                <td>@item.TipTreninga</td>
-                <td>@item.Fitnes_centar</td>
-                <td>@item.TrajanjeTreninga</td>
-                <td>@item.DatumTreninga</td>
-                <td>@item.MaxPosetioci</td>
-                <td>@item.Posetioci.Count</td>
-                <td>
-                    <a href="~/Home/PrijaviSeZaGrupniTrening?naziv=@item.Naziv">Prijavi se</a>
+                <td align="center">@item.Naziv</td>
+                <td align="center">@item.TipTreninga</td>
+                <td align="center">@item.Fitnes_centar</td>
+                <td align="center">@item.TrajanjeTreninga</td>
+                <td align="center">@item.DatumTreninga</td>
+                <td align="center">@item.VremeTreninga</td>
+                <td align="center">@item.MaxPosetioci</td>
+                <td align="center">@item.Posetioci.Count</td>
+                <td align="center">
+                    <form action="~/Home/PrijaviSeZaGrupniTrening">
+
+                        <button name="naziv" value="@item.Naziv">Prijavi se</button>
+
+                    </form>
                 </td>
             </tr>
         }

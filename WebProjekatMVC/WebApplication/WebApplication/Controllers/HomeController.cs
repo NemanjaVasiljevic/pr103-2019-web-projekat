@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication.Models;
+using WebApplication.Models.Enums;
 
 namespace WebApplication.Controllers
 {
@@ -278,17 +279,20 @@ namespace WebApplication.Controllers
 
             foreach (Korisnik x in korisnici)
             {
-                foreach (GrupniTrening g in x.GrupniTreninziTrener)
+                if (x.Uloga.ToString().Equals(Uloga.TRENER.ToString()))
                 {
-                    if (g.Naziv.Equals(naziv))
+                    foreach (GrupniTrening g in x.GrupniTreninziTrener)
                     {
-                        trener = x;
+                        if (g.Naziv.Equals(naziv))
+                        {
+                            trener = x;
+                            break;
+                        }
+                    }
+                    if (trener != null)
+                    {
                         break;
                     }
-                }
-                if(trener != null)
-                {
-                    break;
                 }
             }
             
