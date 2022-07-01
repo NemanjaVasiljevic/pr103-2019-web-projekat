@@ -40,6 +40,7 @@ namespace WebApplication.Controllers
         {
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             Korisnik k = (Korisnik)Session["user"];
+            GrupniTrening gt = new GrupniTrening();
             List<Korisnik> korisnici = Korisnik.ReadFromJson();
 
             foreach (Korisnik x in korisnici)
@@ -55,10 +56,21 @@ namespace WebApplication.Controllers
             {
                 if (x.Naziv.Equals(naziv))
                 {
-                    k.GrupniTreninziTrener.Remove(x);
+                    gt = x;
                     break;
                 }
             }
+
+            if(gt.Posetioci.Count == 0)
+            {
+                ViewBag.message = "Ne mozete obrisati ovaj trening jer ima prijavljene posetioce";
+                return View("Notification");
+            }
+            else
+            {
+                k.GrupniTreninziTrener.Remove(gt);
+            }
+
             Korisnik.WriteToJson(korisnici);
             treninzi = k.GrupniTreninziTrener;
             ViewBag.korisnik = k;

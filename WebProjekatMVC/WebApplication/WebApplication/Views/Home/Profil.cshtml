@@ -4,9 +4,11 @@
     ViewBag.Title = "Profil";
 }
 <br />
-    <form action="~/Home/EditProfil">
-        <input type="submit" value="Izmeni profil" />
-    </form>
+<form action="~/Home/EditProfil">
+
+    <button name="naziv" value="@ViewBag.korisnik.KorisnickoIme">Izmeni profil</button>
+
+</form>
 <br />
 <div>
     <p>Korisnicko ime: @ViewBag.korisnik.KorisnickoIme</p>
@@ -19,7 +21,7 @@
 
     @if (ViewBag.korisnik.GrupniTreninziPosetilac != null)
     {
-        <p>Lista grupnih treninga:</p>
+        <p>Lista grupnih treninga na koje sam prijavljen:</p>
         <table border="1">
             <tr>
                 <th>Naziv</th>
@@ -134,7 +136,9 @@
                     <td align="center">@item.Posetioci.Count</td>
                     <td>
                         <div>
-                            <input type="submit" name="mod" value="Modifikuj" />
+                            <form action="~/Trener/ModifikujView">
+                                <button name="naziv" value="@item.Naziv">Modifikuj</button>
+                            </form>
 
                             <form action="~/Trener/PogledajPrijavljene">
                                 <button name="naziv" value="@item.Naziv">Prijavljeni</button>
@@ -208,14 +212,14 @@
     <br />
     @if (ViewBag.korisnik.Uloga.ToString().Equals("TRENER"))
     {
-        <p>Fitnes centar(trener): @ViewBag.korisnik.FitnesCentarTrener.Naziv</p>
+        <p>Trener u fitnes centru: @ViewBag.korisnik.FitnesCentarTrener.Naziv</p>
         <form action="~/Trener/Add" method="post">
             <input type="submit" name="add" value="Dodaj novi grupni trening" />
         </form>
     }
     @if (ViewBag.korisnik.Uloga.ToString().Equals("VLASNIK"))
     {
-        <p>Fitnes centar(vlasnik):</p>
+        <p>Vlasnik fitnes centra: @ViewBag.korisnik.FitnesCentarVlasnik.Naziv</p>
     }
 </div>
 

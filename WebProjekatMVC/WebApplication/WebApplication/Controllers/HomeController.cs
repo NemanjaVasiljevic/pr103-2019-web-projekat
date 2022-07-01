@@ -47,8 +47,20 @@ namespace WebApplication.Controllers
             }
         }
 
-        public ActionResult EditProfil()
+        public ActionResult EditProfil(string naziv)
         {
+            List<Korisnik> sviKorisnici = Korisnik.ReadFromJson();
+            Korisnik k = new Korisnik();
+
+            foreach (Korisnik x in sviKorisnici)
+            {
+                if (x.KorisnickoIme.Equals(naziv))
+                {
+                    k = x;
+                    break;
+                }
+            }
+            ViewBag.korisnik = k;
             return View();
         }
 
@@ -75,16 +87,27 @@ namespace WebApplication.Controllers
                 }
                 if (updated.Email.Equals(x.Email) && !updated.Email.Equals(x.Email))
                 {
-                    ViewBag.message = $"Nije moguca promena mejla u {updated.Email}, vec je zauzeto";
+                    ViewBag.message = $"Nije moguca promena mejla u {updated.Email}, vec je zauzet";
                     return View("Notification");
                 }
                 index++;
+            }
+
+            try
+            {
+                DateTime unetDatum = Convert.ToDateTime(updated.DatumRodjenja);
+            }
+            catch
+            {
+                ViewBag.message = $"Uneti datum rodjenja je pogresnog formata";
+                return View("Notification");
             }
 
             updated.GrupniTreninziPosetilac = logged.GrupniTreninziPosetilac;
             updated.GrupniTreninziTrener = logged.GrupniTreninziTrener;
             updated.FitnesCentarTrener = logged.FitnesCentarTrener;
             updated.FitnesCentarVlasnik = logged.FitnesCentarVlasnik;
+            updated.Uloga = logged.Uloga;
 
             allUsers[foundIndex] = updated;
             Korisnik.WriteToJson(allUsers);

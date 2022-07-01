@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication.Models;
+using WebApplication.Models.Enums;
 
 namespace WebApplication.Controllers
 {
     public class TrenerController : Controller
     {
+        private static GrupniTrening stariTrening = new GrupniTrening();
+
         // GET: Trener
         public ActionResult Add()
         {
@@ -112,6 +115,111 @@ namespace WebApplication.Controllers
             }
 
             return View("Prijavljeni");
+        }
+
+        public ActionResult ModifikujView(string naziv)
+        {
+            List<GrupniTrening> treninzi = GrupniTrening.ReadFromJson();
+            GrupniTrening gt = new GrupniTrening();
+
+            foreach (GrupniTrening x in treninzi)
+            {
+                if (x.Naziv.Equals(naziv))
+                {
+                    gt = x;
+                    break;
+                }
+            }
+
+            stariTrening = gt;
+            ViewBag.trening = gt;
+
+            /*string datum = "06/06/2022";
+            DateTime konvertovan = Convert.ToDateTime(datum);*/
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Modifikuj(GrupniTrening gt)
+        {
+            Korisnik k = (Korisnik)Session["user"];
+            List<GrupniTrening> sviTreninzi = GrupniTrening.ReadFromJson();
+            List<Korisnik> sviKorisnici = Korisnik.ReadFromJson();
+
+            int index = 0;
+            int indexToReplace = 0;
+
+            foreach (GrupniTrening x in sviTreninzi)
+            {
+                if (x.Naziv.Equals(gt.Naziv))
+                {
+                    ViewBag.message = $"Trening pod nazivom {x.Naziv} vec postoji!";
+                    return View("Notification");
+                }
+                if (x.Naziv.Equals(stariTrening.Naziv))
+                {
+                    indexToReplace = index;
+                }
+                index++;
+            }
+
+            /*try
+            {
+                DateTime unetDatum = Convert.ToDateTime(gt.DatumTreninga);
+            }
+            catch
+            {
+                ViewBag.message = $"Uneti datum rodjenja je pogresnog formata";
+                return View("Notification");
+            }*/
+
+            if(gt.MaxPosetioci < stariTrening.Posetioci.Count)
+            {
+                ViewBag.message = $"Maksimalni broj posetioca ne moze biti manji od broja trenutno prijavljenih";
+                return View("Notification");
+            }
+            if (gt.MaxPosetioci < 0)
+            {
+                ViewBag.message = $"Maksimalni broj posetioca ne moze negativan broj";
+                return View("Notification");
+            }
+
+            gt.Posetioci = stariTrening.Posetioci;
+            sviTreninzi[indexToReplace] = gt;
+
+            int indexTreninga = 0;
+
+            foreach (Korisnik x in sviKorisnici)
+            {
+                indexTreninga = 0;
+                if (x.Uloga.ToString().Equals(Uloga.POSETILAC.ToString()))
+                {
+                    foreach (GrupniTrening g in x.GrupniTreninziPosetilac)
+                    {
+                        if (g.Naziv.Equals(stariTrening.Naziv))
+                        {
+                            x.GrupniTreninziPosetilac[indexTreninga] = gt;
+                            break;
+                        }
+                        indexTreninga++;
+                    }
+                }else if (x.Uloga.ToString().Equals(Uloga.TRENER.ToString()))
+                {
+                    foreach (GrupniTrening g in x.GrupniTreninziTrener)
+                    {
+                        if (g.Naziv.Equals(stariTrening.Naziv))
+                        {
+                            x.GrupniTreninziTrener[indexTreninga] = gt;
+                            break;
+                        }
+                        indexTreninga++;
+                    }
+                }
+            }
+
+            GrupniTrening.WriteToJson(sviTreninzi);
+            Korisnik.WriteToJson(sviKorisnici);
+            return RedirectToAction("Profil", "Home");
         }
     }
 }

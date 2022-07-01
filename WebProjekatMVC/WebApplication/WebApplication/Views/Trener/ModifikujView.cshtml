@@ -1,0 +1,43 @@
+﻿@using WebApplication.Models
+@{
+    ViewBag.Title = "ModifikujView";
+}
+
+<h2>Izmeni podatke grupnog treninga</h2>
+<form action="~/Trener/Modifikuj" method="post">
+    <table>
+        <tr>
+            <td>Naziv:</td>
+            <td><input type="text" name="Naziv" placeholder="@ViewBag.trening.Naziv" /></td>
+        </tr>
+        <tr>
+            <td>Tip treninga:</td>
+            <td><input type="text" name="TipTreninga" placeholder="@ViewBag.trening.TipTreninga" /></td>
+        </tr>
+        <tr>
+            <td>Fitnes centar:</td>
+            <td><input type="text" name="Fitnes_centar" placeholder="@ViewBag.trening.Fitnes_centar" /></td>
+        </tr>
+        <tr>
+            <td>Trajanje treninga:</td>
+            <td><input type="text" name="TrajanjeTreninga" placeholder="@ViewBag.trening.TrajanjeTreninga" /></td>
+        </tr>
+        <tr>
+            <td>Datum treninga:</td>
+            <td><input type="text" name="DatumTreninga" placeholder="@ViewBag.trening.DatumTreninga" /></td>
+        </tr>
+        <tr>
+            <td>Vreme pocetka treninga:</td>
+            <td><input type="text" name="VremeTreninga" placeholder="@ViewBag.trening.VremeTreninga" /></td>
+        </tr>
+        <tr>
+            <td>Maksimalan broj posetioca:</td>
+            <td><input type="text" name="MaxPosetioci" placeholder="@ViewBag.trening.MaxPosetioci" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Confirm changes" />
+            </td>
+        </tr>
+    </table>
+</form>

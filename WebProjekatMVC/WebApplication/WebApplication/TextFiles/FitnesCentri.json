@@ -9,29 +9,57 @@
     },
     "GodinaOtvaranja": 2000,
     "Vlasnik": {
-      "KorisnickoIme": "Nemanja",
+      "KorisnickoIme": "ervin",
       "Lozinka": "1234",
-      "Ime": "Nemanja",
-      "Prezime": "Vasiljevic",
-      "Pol": "MUSKI",
-      "Email": "nemus.vasiljevic@gmail.com",
-      "DatumRodjenja": "08/12/2000",
-      "Uloga": "VLASNIK",
+      "Ime": "Ervin",
+      "Prezime": "Katona",
+      "Pol": 0,
+      "Email": "ervin@gmail.com",
+      "DatumRodjenja": "03/06/1989",
+      "Uloga": 2,
+      "FitnesCentarTrener": null,
       "FitnesCentarVlasnik": {
-        "Naziv": "Spartan",
+        "Naziv": "X Gym",
         "Adresa": {
-          "Ulica": "Mite Balije",
-          "Broj": "69",
+          "Ulica": "Cirpanova",
+          "Broj": "26",
           "Grad": "Novi Sad",
           "PostanskiBroj": 21000
         },
-        "GodinaOtvaranja": 1998,
+        "GodinaOtvaranja": 2000,
+        "Vlasnik": {
+          "KorisnickoIme": "Nemanja",
+          "Lozinka": "1234",
+          "Ime": "Nemanja",
+          "Prezime": "Vasiljevic",
+          "Pol": "MUSKI",
+          "Email": "nemus.vasiljevic@gmail.com",
+          "DatumRodjenja": "08/12/2000",
+          "Uloga": "VLASNIK",
+          "FitnesCentarVlasnik": {
+            "Naziv": "Spartan",
+            "Adresa": {
+              "Ulica": "Mite Balije",
+              "Broj": "69",
+              "Grad": "Novi Sad",
+              "PostanskiBroj": 21000
+            },
+            "GodinaOtvaranja": 1998,
+            "CenaMesec": 2500,
+            "CenaGodina": 30000,
+            "CenaTrening": 500,
+            "CenaGrupniTrening": 750,
+            "CenaPersonalniTrening": 1500
+          }
+        },
         "CenaMesec": 2500,
         "CenaGodina": 30000,
         "CenaTrening": 500,
         "CenaGrupniTrening": 750,
         "CenaPersonalniTrening": 1500
-      }
+      },
+      "GrupniTreninziPosetilac": null,
+      "GrupniTreninziTrener": null
     },
     "CenaMesec": 2500,
     "CenaGodina": 30000,
