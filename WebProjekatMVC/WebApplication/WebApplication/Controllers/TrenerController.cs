@@ -65,11 +65,11 @@ namespace WebApplication.Controllers
             int danBroj = Int32.Parse(dan);
             int trenutniDanBroj = Int32.Parse(trenutniDan);
             
-            /*if(danBroj < trenutniDanBroj + 3)
+            if(danBroj < trenutniDanBroj + 3)
             {
                 ViewBag.message = $"Teretana sa nazivom {gt.Fitnes_centar} ne postoji, probajte opet";
                 return View("Add");
-            }*/
+            }
 
             gt.Posetioci = new List<Korisnik>();
             sviTreninzi.Add(gt);
@@ -80,24 +80,38 @@ namespace WebApplication.Controllers
             return RedirectToAction("Profil","Home");
         }
 
-        [HttpPost]
-        public ActionResult DeleteGroup(string naziv)
+        
+        public ActionResult PogledajPrijavljene(string naziv)
         {
+            List<Korisnik> allUsers = Korisnik.ReadFromJson();
             Korisnik k = (Korisnik)Session["user"];
-            List<Korisnik> korisnici = Korisnik.ReadFromJson();
+        
 
+            foreach (Korisnik x in allUsers)
+            {
+                if (x.KorisnickoIme.Equals(k.KorisnickoIme))
+                {
+                    k = x;
+                    break;
+                }
+            }
 
             foreach (GrupniTrening x in k.GrupniTreninziTrener)
             {
                 if (x.Naziv.Equals(naziv))
                 {
-                    k.GrupniTreninziTrener.Remove(x);
+                    ViewBag.posetioci = x.Posetioci;
                     break;
                 }
             }
 
+            if(ViewBag.posetioci.Count == 0)
+            {
+                ViewBag.message = "Niko nije prijavljen na ovaj trening";
+                return View("Notification");
+            }
 
-            return RedirectToAction("IndexDel", "GrupniTreninzi", new { korisnik = k });
+            return View("Prijavljeni");
         }
     }
 }

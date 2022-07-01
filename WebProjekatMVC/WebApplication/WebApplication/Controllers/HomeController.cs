@@ -241,6 +241,7 @@ namespace WebApplication.Controllers
             List<Korisnik> korisnici = Korisnik.ReadFromJson();
             GrupniTrening gt = new GrupniTrening();
             Korisnik user = new Korisnik();
+            Korisnik trener = null;
             Korisnik k = (Korisnik)Session["user"];         
 
             foreach (GrupniTrening x in grupniTreninzi)
@@ -252,6 +253,21 @@ namespace WebApplication.Controllers
                 }
             }
 
+            foreach (Korisnik x in korisnici)
+            {
+                foreach (GrupniTrening g in x.GrupniTreninziTrener)
+                {
+                    if (g.Naziv.Equals(naziv))
+                    {
+                        trener = x;
+                        break;
+                    }
+                }
+                if(trener != null)
+                {
+                    break;
+                }
+            }
             
             // ako nije ulogovan 
             if (k == null)
@@ -285,10 +301,21 @@ namespace WebApplication.Controllers
                 if (user.GrupniTreninziPosetilac == null)
                 {
                     gt.Posetioci.Add(k);
-                    GrupniTrening.WriteToJson(grupniTreninzi);
+                    
 
                     user.GrupniTreninziPosetilac = new List<GrupniTrening>();
                     user.GrupniTreninziPosetilac.Add(gt);
+
+                    foreach (GrupniTrening g in trener.GrupniTreninziTrener)
+                    {
+                        if (g.Naziv.Equals(gt.Naziv))
+                        {
+                            g.Posetioci.Add(k);
+                        }
+                    }
+
+
+                    GrupniTrening.WriteToJson(grupniTreninzi);
                     Korisnik.WriteToJson(korisnici);
 
                     ViewBag.message = $"Uspesno ste se prijavili za trening kao korisnik {k.Ime}";
@@ -305,10 +332,19 @@ namespace WebApplication.Controllers
                             return View("Notification");
                         }
                     }
-                    gt.Posetioci.Add(k);
-                    GrupniTrening.WriteToJson(grupniTreninzi);
 
+                    gt.Posetioci.Add(k);
                     user.GrupniTreninziPosetilac.Add(gt);
+
+                    foreach (GrupniTrening g in trener.GrupniTreninziTrener)
+                    {
+                        if (g.Naziv.Equals(gt.Naziv))
+                        {
+                            g.Posetioci.Add(k);
+                        }
+                    }
+
+                    GrupniTrening.WriteToJson(grupniTreninzi);
                     Korisnik.WriteToJson(korisnici);
 
                     ViewBag.message = $"Uspesno ste se prijavili za trening kao korisnik {k.Ime}";

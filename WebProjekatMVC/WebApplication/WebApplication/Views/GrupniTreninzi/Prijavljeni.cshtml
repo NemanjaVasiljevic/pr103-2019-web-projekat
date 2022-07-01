@@ -1,0 +1,17 @@
+﻿@using WebApplication.Models
+@{
+    ViewBag.Title = "Prijavljeni";
+}
+
+<h2>Prijavljeni na trening</h2>
+@foreach (Korisnik item in ViewBag.posetioci)
+{
+    if (item.Ime == null)
+    {
+        <p>Neprijavljen gost</p>
+    }
+    else
+    {
+        <p>@item.Ime  @item.Prezime</p>
+    }
+}

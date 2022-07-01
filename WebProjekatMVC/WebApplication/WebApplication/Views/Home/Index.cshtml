@@ -23,7 +23,9 @@
                 <td>@fc.Adresa.ToString()</td>
                 <td>@fc.GodinaOtvaranja</td>
                 <td>
-                    <a href="~/Home/Details?fc=@fc.Naziv">Details</a>
+                    <form action="~/Home/Details">
+                        <button name="fc" value="@fc.Naziv">Detalji</button>
+                    </form>
                 </td>
             </tr>
         }

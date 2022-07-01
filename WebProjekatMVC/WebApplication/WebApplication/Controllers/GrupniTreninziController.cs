@@ -34,27 +34,36 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public ActionResult IndexDel(Korisnik korisnik)
+
+        [HttpPost]
+        public ActionResult DeleteGroup(string naziv)
         {
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-
             Korisnik k = (Korisnik)Session["user"];
-            if (k == null)
+            List<Korisnik> korisnici = Korisnik.ReadFromJson();
+
+            foreach (Korisnik x in korisnici)
             {
-                ViewBag.message = "Ulogujte se da biste mogli pogledati profil";
-                return RedirectToAction("IndexProfil", "RegLog");
-            }
-            ViewBag.korisnik = k;
-            if (treninzi.Count == 0)
-            {
-                ViewBag.treninzi = sortirani;
-            }
-            else
-            {
-                ViewBag.treninzi = korisnik.GrupniTreninziTrener;
+                if (k.KorisnickoIme.Equals(x.KorisnickoIme))
+                {
+                    k = x;
+                    break;
+                }
             }
 
-            return View();
+            foreach (GrupniTrening x in k.GrupniTreninziTrener)
+            {
+                if (x.Naziv.Equals(naziv))
+                {
+                    k.GrupniTreninziTrener.Remove(x);
+                    break;
+                }
+            }
+            Korisnik.WriteToJson(korisnici);
+            treninzi = k.GrupniTreninziTrener;
+            ViewBag.korisnik = k;
+            ViewBag.treninzi = treninzi;
+            return View("Index");
         }
 
         public ActionResult SearchByNaziv(string naziv)

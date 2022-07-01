@@ -133,9 +133,12 @@
                     <td>
                         <div>
                             <input type="submit" name="mod" value="Modifikuj" />
-                            <input type="submit" name="list" value="Pogledaj prijavljene" />
 
-                            <form action="~/Trener/DeleteGroup?naziv=@item.Naziv" method="post">
+                            <form action="~/Trener/PogledajPrijavljene">
+                                <button name="naziv" value="@item.Naziv">Prijavljeni</button>
+                            </form>
+
+                            <form action="~/GrupniTreninzi/DeleteGroup?naziv=@item.Naziv" method="post">
                                 <input type="submit" name="delete" value="Obrisi" />
                             </form>
                         </div>
