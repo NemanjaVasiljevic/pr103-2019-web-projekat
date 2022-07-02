@@ -15,6 +15,7 @@ namespace WebApplication.Controllers
         public ActionResult Index()
         {
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
+            List<Korisnik> sviKorisnici = Korisnik.ReadFromJson();
 
             Korisnik k = (Korisnik)Session["user"];
             if (k == null)
@@ -22,8 +23,16 @@ namespace WebApplication.Controllers
                 ViewBag.message = "Ulogujte se da biste mogli pogledati profil";
                 return RedirectToAction("IndexProfil", "RegLog");
             }
+            foreach (Korisnik x in sviKorisnici)
+            {
+                if (x.KorisnickoIme.Equals(k.KorisnickoIme))
+                {
+                    k = x;
+                    break;
+                }
+            }
             ViewBag.korisnik = k;
-            if(treninzi.Count == 0)
+            if (treninzi.Count == 0)
             {
                 ViewBag.treninziPosetilac = sortiraniPosetilac;
                 ViewBag.treninziTrener = sortiraniTrener;
@@ -33,7 +42,7 @@ namespace WebApplication.Controllers
             {
                 ViewBag.treninzi = treninzi;
             }
-           
+
             return View();
         }
 
@@ -64,7 +73,7 @@ namespace WebApplication.Controllers
                 }
             }
 
-            if(gt.Posetioci.Count == 0)
+            if (gt.Posetioci.Count != 0)
             {
                 ViewBag.message = "Ne mozete obrisati ovaj trening jer ima prijavljene posetioce";
                 return View("Notification");
@@ -310,7 +319,7 @@ namespace WebApplication.Controllers
 
             foreach (GrupniTrening x in gt)
             {
-                if (x.Naziv.Equals(naziv) && x.TipTreninga.Equals(tipTreninga) &&x.Fitnes_centar.Equals(centar))
+                if (x.Naziv.Equals(naziv) && x.TipTreninga.Equals(tipTreninga) && x.Fitnes_centar.Equals(centar))
                 {
                     treninzi.Add(x);
                 }
@@ -498,7 +507,7 @@ namespace WebApplication.Controllers
             catch (Exception)
             {
 
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
             return RedirectToAction("Index", "GrupniTreninzi");
 
@@ -527,7 +536,7 @@ namespace WebApplication.Controllers
             catch (Exception)
             {
 
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
             return RedirectToAction("Index", "GrupniTreninzi");
 
@@ -551,12 +560,12 @@ namespace WebApplication.Controllers
             sortiraniPosetilac = gt.OrderBy(x => x.TipTreninga).Reverse().ToList();
             try
             {
-                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+                sortiraniTrener = k.GrupniTreninziTrener;
             }
             catch (Exception)
             {
 
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
             return RedirectToAction("Index", "GrupniTreninzi");
 
@@ -585,7 +594,7 @@ namespace WebApplication.Controllers
             catch (Exception)
             {
 
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
             return RedirectToAction("Index", "GrupniTreninzi");
 
@@ -617,7 +626,7 @@ namespace WebApplication.Controllers
             catch (Exception)
             {
 
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
             return RedirectToAction("Index", "GrupniTreninzi");
 
@@ -646,7 +655,7 @@ namespace WebApplication.Controllers
             catch (Exception)
             {
 
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
             return RedirectToAction("Index", "GrupniTreninzi");
 

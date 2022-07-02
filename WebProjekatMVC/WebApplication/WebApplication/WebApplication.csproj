@@ -192,6 +192,7 @@
     <Content Include="Views\Trener\ModifikujView.cshtml" />
     <Content Include="Views\Vlasnik\NewTeretana.cshtml" />
     <Content Include="Views\Vlasnik\AdresaTeretane.cshtml" />
+    <Content Include="Views\GrupniTreninzi\Notification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

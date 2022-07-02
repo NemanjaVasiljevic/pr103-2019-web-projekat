@@ -46,38 +46,75 @@
 
         <br />
 
-        @if (ViewBag.treninziPosetilac != null && ViewBag.korisnik.GrupniTreninziPosetilac != null)
+        @if ((ViewBag.treninziPosetilac != null && ViewBag.korisnik.GrupniTreninziPosetilac != null) || ViewBag.treninzi.Count > 0)
         {
-            <p class="detaljiNaslov">Lista grupnih treninga na koje sam prijavljen:</p>
+            if (ViewBag.treninziPosetilac == null)
+            {
+                <p class="detaljiNaslov">Lista grupnih treninga na koje sam prijavljen:</p>
 
-            <table border="1">
-                <tr>
-                    <th class="tableHeader">Naziv</th>
-                    <th class="tableHeader">Tip treninga</th>
-                    <th class="tableHeader">Fitnes centar</th>
-                    <th class="tableHeader">Trajanje treninga</th>
-                    <th class="tableHeader">Datum</th>
-                    <th class="tableHeader">Vreme</th>
-                    <th class="tableHeader">Maksimalan broj posetilaca</th>
-                    <th class="tableHeader">Broj prijavljenih korisnika na trening</th>
-
-                </tr>
-                @foreach (GrupniTrening item in ViewBag.treninziPosetilac)
-                {
-                    <tr class="tableRow">
-                        <td class="tableDataDetail">@item.Naziv</td>
-                        <td class="tableDataDetail">@item.TipTreninga</td>
-                        <td class="tableDataDetail">@item.Fitnes_centar</td>
-                        <td class="tableDataDetail">@item.TrajanjeTreninga min</td>
-                        <td class="tableDataDetail">@item.DatumTreninga</td>
-                        <td class="tableDataDetail">@item.VremeTreninga</td>
-                        <td class="tableDataDetail">@item.MaxPosetioci</td>
-                        <td class="tableDataDetail">@item.Posetioci.Count</td>
+                <table border="1">
+                    <tr>
+                        <th class="tableHeader">Naziv</th>
+                        <th class="tableHeader">Tip treninga</th>
+                        <th class="tableHeader">Fitnes centar</th>
+                        <th class="tableHeader">Trajanje treninga</th>
+                        <th class="tableHeader">Datum</th>
+                        <th class="tableHeader">Vreme</th>
+                        <th class="tableHeader">Maksimalan broj posetilaca</th>
+                        <th class="tableHeader">Broj prijavljenih korisnika na trening</th>
 
                     </tr>
-                }
-            </table>
-            <br /><br />
+                    @foreach (GrupniTrening item in ViewBag.treninzi)
+                    {
+                        <tr class="tableRow">
+                            <td class="tableDataDetail">@item.Naziv</td>
+                            <td class="tableDataDetail">@item.TipTreninga</td>
+                            <td class="tableDataDetail">@item.Fitnes_centar</td>
+                            <td class="tableDataDetail">@item.TrajanjeTreninga min</td>
+                            <td class="tableDataDetail">@item.DatumTreninga</td>
+                            <td class="tableDataDetail">@item.VremeTreninga</td>
+                            <td class="tableDataDetail">@item.MaxPosetioci</td>
+                            <td class="tableDataDetail">@item.Posetioci.Count</td>
+
+                        </tr>
+                    }
+                </table>
+                <br /><br />
+            }
+            else
+            {
+                <p class="detaljiNaslov">Lista grupnih treninga na koje sam prijavljen:</p>
+
+                <table border="1">
+                    <tr>
+                        <th class="tableHeader">Naziv</th>
+                        <th class="tableHeader">Tip treninga</th>
+                        <th class="tableHeader">Fitnes centar</th>
+                        <th class="tableHeader">Trajanje treninga</th>
+                        <th class="tableHeader">Datum</th>
+                        <th class="tableHeader">Vreme</th>
+                        <th class="tableHeader">Maksimalan broj posetilaca</th>
+                        <th class="tableHeader">Broj prijavljenih korisnika na trening</th>
+
+                    </tr>
+                    @foreach (GrupniTrening item in ViewBag.treninziPosetilac)
+                    {
+                        <tr class="tableRow">
+                            <td class="tableDataDetail">@item.Naziv</td>
+                            <td class="tableDataDetail">@item.TipTreninga</td>
+                            <td class="tableDataDetail">@item.Fitnes_centar</td>
+                            <td class="tableDataDetail">@item.TrajanjeTreninga min</td>
+                            <td class="tableDataDetail">@item.DatumTreninga</td>
+                            <td class="tableDataDetail">@item.VremeTreninga</td>
+                            <td class="tableDataDetail">@item.MaxPosetioci</td>
+                            <td class="tableDataDetail">@item.Posetioci.Count</td>
+
+                        </tr>
+                    }
+                </table>
+                <br /><br />
+            }
+
 
             <br /><br />
             <form action="~/GrupniTreninzi/SearchByNaziv">
@@ -136,117 +173,122 @@
         }
 
 
-        @if (ViewBag.treninziTrener != null && ViewBag.korisnik.GrupniTreninziTrener != null)
+        @if ((ViewBag.treninziTrener != null && ViewBag.korisnik.GrupniTreninziTrener != null) || ViewBag.treninzi.Count > 0)
         {
-            <br />
-            <p class="detaljiNaslov">Lista grupnih treninga(trener):</p>
-            <table border="1">
-                <tr>
-                    <th class="tableHeader">Naziv</th>
-                    <th class="tableHeader">Tip treninga</th>
-                    <th class="tableHeader">Fitnes centar</th>
-                    <th class="tableHeader">Trajanje treninga</th>
-                    <th class="tableHeader">Datum</th>
-                    <th class="tableHeader">Vreme</th>
-                    <th class="tableHeader">Maksimalan broj posetilaca</th>
-                    <th class="tableHeader">Broj prijavljenih korisnika na trening</th>
-                    <th class="tableHeader">Kontole</th>
-
-                </tr>
-                @foreach (GrupniTrening item in ViewBag.treninziTrener)
-                {
+            if (ViewBag.treninziTrener != null)
+            {
+                <br />
+                <p class="detaljiNaslov">Lista grupnih treninga(trener):</p>
+                <table border="1">
                     <tr>
-                        <td class="tableDataDetail">@item.Naziv</td>
-                        <td class="tableDataDetail">@item.TipTreninga</td>
-                        <td class="tableDataDetail">@item.Fitnes_centar</td>
-                        <td class="tableDataDetail">@item.TrajanjeTreninga min</td>
-                        <td class="tableDataDetail">@item.DatumTreninga</td>
-                        <td class="tableDataDetail">@item.VremeTreninga</td>
-                        <td class="tableDataDetail">@item.MaxPosetioci</td>
-                        <td class="tableDataDetail">@item.Posetioci.Count</td>
-                        <td class="tableDataDetail">
-                            <div>
-                                @{
-                                    int dan = Int32.Parse(item.DatumTreninga.Split('/')[0]);
-                                    int mesec = Int32.Parse(item.DatumTreninga.Split('/')[1]);
-                                    int trenutniDan = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[0]);
-                                    int trenutniMesec = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[1]);
-                                    if (mesec > trenutniMesec || (dan > trenutniDan && mesec == trenutniDan))
-                                    {
-                                        <form action="~/Trener/ModifikujView">
-                                            <button class="btn" name="naziv" value="@item.Naziv">Modifikuj</button>
-                                        </form>
-                                    }
-                                }
+                        <th class="tableHeader">Naziv</th>
+                        <th class="tableHeader">Tip treninga</th>
+                        <th class="tableHeader">Fitnes centar</th>
+                        <th class="tableHeader">Trajanje treninga</th>
+                        <th class="tableHeader">Datum</th>
+                        <th class="tableHeader">Vreme</th>
+                        <th class="tableHeader">Maksimalan broj posetilaca</th>
+                        <th class="tableHeader">Broj prijavljenih korisnika na trening</th>
+                        <th class="tableHeader">Kontole</th>
 
-                                <form action="~/Trener/PogledajPrijavljene">
-                                    <button class="btn" name="naziv" value="@item.Naziv">Prijavljeni</button>
-                                </form>
-
-                                <form action="~/GrupniTreninzi/DeleteGroup?naziv=@item.Naziv" method="post">
-                                    <input class="btn" type="submit" name="delete" value="Obrisi" />
-                                </form>
-                            </div>
-                        </td>
                     </tr>
-                }
-            </table>
-            <br /><br />
+                    @foreach (GrupniTrening item in ViewBag.treninziTrener)
+                    {
+                        <tr>
+                            <td class="tableDataDetail">@item.Naziv</td>
+                            <td class="tableDataDetail">@item.TipTreninga</td>
+                            <td class="tableDataDetail">@item.Fitnes_centar</td>
+                            <td class="tableDataDetail">@item.TrajanjeTreninga min</td>
+                            <td class="tableDataDetail">@item.DatumTreninga</td>
+                            <td class="tableDataDetail">@item.VremeTreninga</td>
+                            <td class="tableDataDetail">@item.MaxPosetioci</td>
+                            <td class="tableDataDetail">@item.Posetioci.Count</td>
+                            <td class="tableDataDetail">
+                                <div>
+                                    @{
+                                        int dan = Int32.Parse(item.DatumTreninga.Split('/')[0]);
+                                        int mesec = Int32.Parse(item.DatumTreninga.Split('/')[1]);
+                                        int trenutniDan = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[0]);
+                                        int trenutniMesec = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[1]);
+                                        if (mesec > trenutniMesec || (dan > trenutniDan && mesec == trenutniDan))
+                                        {
+                                            <form action="~/Trener/ModifikujView">
+                                                <button class="btn" name="naziv" value="@item.Naziv">Modifikuj</button>
+                                            </form>
+                                        }
+                                    }
 
-            <form action="~/GrupniTreninzi/SearchByNazivTrener">
-                <label for="searchByNaziv">Pretrazi po nazivu:</label>
-                <input type="text" name="naziv" placeholder="Naziv" />
-                <button class="btn" id="searchByName">Pronadji</button>
-            </form>
-            <br />
-            <form action="~/GrupniTreninzi/SearchByTipTreningaTrener">
-                <label for="searchByTipTreninga">Pretrazi po tipu treninga:</label>
-                <input type="text" name="tipTreninga" placeholder="Tip treninga" />
-                <button class="btn" id="searchByTipTreninga">Pronadji</button>
-            </form>
-            <br />
-            <form action="~/GrupniTreninzi/SearchByDatumTrener">
-                <label for="searchByNazivCentra">Pretrazi po datumu i vremenu:</label>
-                <input type="text" name="datum" placeholder="Datum (dd/MM/yyyy)" />
-                <input type="text" name="vreme" placeholder="Vreme (HH:mm)" />
-                <button class="btn" id="searchByNazivCentra">Pronadji</button>
-            </form>
-            <br /><br />
+                                    <form action="~/Trener/PogledajPrijavljene">
+                                        <button class="btn" name="naziv" value="@item.Naziv">Prijavljeni</button>
+                                    </form>
 
-            <p class="kombinovanaPretraga">Kombinovana pretraga</p>
-            <div>
-                <form action="~/GrupniTreninzi/KombinovanaPretragaTrener">
+                                    <form action="~/GrupniTreninzi/DeleteGroup?naziv=@item.Naziv" method="post">
+                                        <input class="btn" type="submit" name="delete" value="Obrisi" />
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <br /><br />
+
+
+                <form action="~/GrupniTreninzi/SearchByNazivTrener">
+                    <label for="searchByNaziv">Pretrazi po nazivu:</label>
                     <input type="text" name="naziv" placeholder="Naziv" />
-                    <input type="text" name="tipTreninga" placeholder="Tip treninga" />
-                    <input type="text" name="datum" placeholder="Datum" />
-                    <input type="text" name="vreme" placeholder="Vreme" />
-                    <button class="btn btnKombinovano" id="kombinovanaPretragaTrener">Pronadji</button>
+                    <button class="btn" id="searchByName">Pronadji</button>
                 </form>
-            </div>
+                <br />
+                <form action="~/GrupniTreninzi/SearchByTipTreningaTrener">
+                    <label for="searchByTipTreninga">Pretrazi po tipu treninga:</label>
+                    <input type="text" name="tipTreninga" placeholder="Tip treninga" />
+                    <button class="btn" id="searchByTipTreninga">Pronadji</button>
+                </form>
+                <br />
+                <form action="~/GrupniTreninzi/SearchByDatumTrener">
+                    <label for="searchByNazivCentra">Pretrazi po datumu i vremenu:</label>
+                    <input type="text" name="datum" placeholder="Datum (dd/MM/yyyy)" />
+                    <input type="text" name="vreme" placeholder="Vreme (HH:mm)" />
+                    <button class="btn" id="searchByNazivCentra">Pronadji</button>
+                </form>
+                <br /><br />
 
-            <br />
-            <form action="~/GrupniTreninzi/SortByNazivAscTrener">
-                <input class="btnSort" type="submit" name="naziv" value="Sortiraj po nazivu rastuce" />
-            </form>
-            <form action="~/GrupniTreninzi/SortByNazivDescTrener">
-                <input class="btnSort" type="submit" name="naziv" value="Sortiraj po nazivu opadajuce" />
-            </form>
+                <p class="kombinovanaPretraga">Kombinovana pretraga</p>
+                <div>
+                    <form action="~/GrupniTreninzi/KombinovanaPretragaTrener">
+                        <input type="text" name="naziv" placeholder="Naziv" />
+                        <input type="text" name="tipTreninga" placeholder="Tip treninga" />
+                        <input type="text" name="datum" placeholder="Datum" />
+                        <input type="text" name="vreme" placeholder="Vreme" />
+                        <button class="btn btnKombinovano" id="kombinovanaPretragaTrener">Pronadji</button>
+                    </form>
+                </div>
+
+                <br />
+                <form action="~/GrupniTreninzi/SortByNazivAscTrener">
+                    <input class="btnSort" type="submit" name="naziv" value="Sortiraj po nazivu rastuce" />
+                </form>
+                <form action="~/GrupniTreninzi/SortByNazivDescTrener">
+                    <input class="btnSort" type="submit" name="naziv" value="Sortiraj po nazivu opadajuce" />
+                </form>
 
 
-            <form action="~/GrupniTreninzi/SortByTipTreningaAscTrener">
-                <input class="btnSort" type="submit" name="tipTreninga" value="Sortiraj po tipu treninga rastuce" />
-            </form>
-            <form action="~/GrupniTreninzi/SortByTipTreningaDescTrener">
-                <input class="btnSort" type="submit" name="tipTreninga" value="Sortiraj po tipu treninga opadajuce" />
-            </form>
+                <form action="~/GrupniTreninzi/SortByTipTreningaAscTrener">
+                    <input class="btnSort" type="submit" name="tipTreninga" value="Sortiraj po tipu treninga rastuce" />
+                </form>
+                <form action="~/GrupniTreninzi/SortByTipTreningaDescTrener">
+                    <input class="btnSort" type="submit" name="tipTreninga" value="Sortiraj po tipu treninga opadajuce" />
+                </form>
 
 
-            <form action="~/GrupniTreninzi/SortByDatumAscTrener">
-                <input class="btnSort" type="submit" name="datum" value="Sortiraj po datumu rastuce" />
-            </form>
-            <form action="~/GrupniTreninzi/SortByDatumDescTrener">
-                <input class="btnSort" type="submit" name="datum" value="Sortiraj po datumu opadajuce" />
-            </form>
+                <form action="~/GrupniTreninzi/SortByDatumAscTrener">
+                    <input class="btnSort" type="submit" name="datum" value="Sortiraj po datumu rastuce" />
+                </form>
+                <form action="~/GrupniTreninzi/SortByDatumDescTrener">
+                    <input class="btnSort" type="submit" name="datum" value="Sortiraj po datumu opadajuce" />
+                </form>
+            }
+
         }
         <br />
         @if (ViewBag.korisnik.Uloga.ToString().Equals("TRENER"))
