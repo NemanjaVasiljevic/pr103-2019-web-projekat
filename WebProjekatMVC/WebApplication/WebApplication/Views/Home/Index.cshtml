@@ -14,7 +14,7 @@
             <th>Naziv</th>
             <th>Adresa</th>
             <th>Godina otvaranja</th>
-            <th></th>
+            <th>Komande</th>
         </tr>
         @foreach (FitnesCentar fc in Model)
         {
@@ -23,8 +23,11 @@
                 <td>@fc.Adresa.ToString()</td>
                 <td>@fc.GodinaOtvaranja</td>
                 <td>
-                    <form action="~/Home/Details">
-                        <button name="fc" value="@fc.Naziv">Detalji</button>
+                    <form action="">
+                        <button name="fc" value="@fc.Naziv">Obrisi</button>
+                    </form>
+                    <form action="">
+                        <button name="fc" value="@fc.Naziv">Modifikuj</button>
                     </form>
                 </td>
             </tr>

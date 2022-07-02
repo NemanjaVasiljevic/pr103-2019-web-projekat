@@ -53,5 +53,14 @@ namespace WebApplication.Models
             return teretane;
 
         }
+
+        public static void WriteToJson(List<FitnesCentar> teretane)
+        {
+            var jsonToWrite = JsonConvert.SerializeObject(teretane);
+            using (var writer = new StreamWriter("C:\\Users\\Nemanja\\Desktop\\WebProjekat\\pr103-2019-web-projekat\\WebProjekatMVC\\WebApplication\\WebApplication\\TextFiles\\FitnesCentri.json"))
+            {
+                writer.Write(jsonToWrite);
+            }
+        }
     }
 }

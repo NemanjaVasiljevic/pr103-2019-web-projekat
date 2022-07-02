@@ -25,7 +25,7 @@ namespace WebApplication.Models
             DatumRodjenja = datumRodjenja;
             Uloga = Uloga.POSETILAC;
             FitnesCentarTrener = new FitnesCentar();
-            FitnesCentarVlasnik = new FitnesCentar();
+            FitnesCentarVlasnik = new List<FitnesCentar>();
             GrupniTreninziPosetilac = new List<GrupniTrening>();
             GrupniTreninziTrener = new List<GrupniTrening>();
 
@@ -40,7 +40,7 @@ namespace WebApplication.Models
         public string DatumRodjenja { get; set; }
         public Uloga Uloga { get; set; }
         public FitnesCentar FitnesCentarTrener { get; set; }
-        public FitnesCentar FitnesCentarVlasnik { get; set; }
+        public List<FitnesCentar> FitnesCentarVlasnik { get; set; }
         public List<GrupniTrening> GrupniTreninziPosetilac { get; set; }
         public List<GrupniTrening> GrupniTreninziTrener { get; set; }
 

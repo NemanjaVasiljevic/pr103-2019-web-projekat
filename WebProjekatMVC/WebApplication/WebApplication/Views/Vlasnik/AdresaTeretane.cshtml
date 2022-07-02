@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "AdresaTeretane";
+}
+
+<h2 style="color:red">@ViewBag.message</h2>
+<h2>AdresaTeretane</h2>
+<form action="~/Vlasnik/AdresaTeretane" method="post">
+    <table>
+        <tr>
+            <td>Ulica:</td>
+            <td><input type="text" name="Ulica" placeholder="Unesite ulicu" /></td>
+        </tr>
+        <tr>
+            <td>Broj:</td>
+            <td><input type="text" name="Broj" placeholder="Unesite broj" /></td>
+        </tr>
+        <tr>
+            <td>Grad:</td>
+            <td><input type="text" name="Grad" placeholder="Unesite grad" /></td>
+        </tr>
+        <tr>
+            <td>Postanski broj:</td>
+            <td><input type="number" name="PostanskiBroj" placeholder="Unesite postanski broj" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Zavrsi adresu" />
+            </td>
+        </tr>
+    </table>
+</form>

@@ -219,7 +219,35 @@
     }
     @if (ViewBag.korisnik.Uloga.ToString().Equals("VLASNIK"))
     {
-        <p>Vlasnik fitnes centra: @ViewBag.korisnik.FitnesCentarVlasnik.Naziv</p>
+        <p>Vlasnik fitnes centara:</p>
+        <table border="1">
+            <tr>
+                <th>Naziv</th>
+                <th>Adresa</th>
+                <th>Godina otvaranja</th>
+                <th>Komande</th>
+            </tr>
+            @foreach (FitnesCentar fc in ViewBag.korisnik.FitnesCentarVlasnik)
+            {
+                <tr>
+                    <td align="center">@fc.Naziv</td>
+                    <td align="center">@fc.Adresa.ToString()</td>
+                    <td align="center">@fc.GodinaOtvaranja</td>
+                    <td>
+                        <form action="">
+                            <button name="fc" value="@fc.Naziv">Obrisi</button>
+                        </form>
+                        <form action="">
+                            <button name="fc" value="@fc.Naziv">Modifikuj</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <form action="~/Vlasnik/AddNewTeretana" method="post">
+            <input type="submit" name="add" value="Dodaj novu teretanu" />
+        </form>
     }
 </div>
 
