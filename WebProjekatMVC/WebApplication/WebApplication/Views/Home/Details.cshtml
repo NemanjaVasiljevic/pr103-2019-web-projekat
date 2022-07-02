@@ -1,53 +1,102 @@
 ﻿@using WebApplication.Models
+@using System.Globalization;
+
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>@ViewBag.teretana.Naziv</h2>
-<div>
-    <p>Gde nas mozete naci: @ViewBag.teretana.Adresa.ToString()</p>
-    <p>Kad smo osnovani: @ViewBag.teretana.GodinaOtvaranja</p>
-    <p>Vlasnik: @ViewBag.teretana.Vlasnik.Ime</p>
-    <p>Mesecna clanarina: @ViewBag.teretana.CenaMesec din</p>
-    <p>Godisnja clanarina: @ViewBag.teretana.CenaGodina din</p>
-    <p>Cena jednog treninga: @ViewBag.teretana.CenaTrening</p>
-    <p>Cena grupnog treninga: @ViewBag.teretana.CenaGrupniTrening</p>
-    <p>Cena personalnog treninga: @ViewBag.teretana.CenaPersonalniTrening</p>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    @Styles.Render("~/Styles/MVCStyle.css")
+</head>
+<body>
 
-
-    <table border="1">
-        <tr>
-            <th>Naziv</th>
-            <th>Tip treninga</th>
-            <th>Fitnes centar</th>
-            <th>Trajanje treninga</th>
-            <th>Datum</th>
-            <th>Vreme</th>
-            <th>Maksimalan broj posetilaca</th>
-            <th>Broj prijavljenih korisnika na trening</th>
-            <th>Prijavi se</th>
-
-        </tr>
-        @foreach (GrupniTrening item in ViewBag.grupniTreninzi)
+    <h2>@ViewBag.teretana.Naziv</h2>
+    <div>
+        <div>
+            <span class="detaljiNaslov">Gde nas mozete naci:</span>
+            <span class="detalji">@ViewBag.teretana.Adresa.ToString()</span>
+        </div>
+        <div>
+            <span class="detaljiNaslov">Kad smo osnovani:</span>
+            <span class="detalji">@ViewBag.teretana.GodinaOtvaranja</span>
+        </div>
+        <div>
+            <span class="detaljiNaslov">Vlasnik:</span>
+            <span class="detalji">@ViewBag.teretana.Vlasnik.Ime</span>
+        </div>
+        <div>
+            <span class="detaljiNaslov">Mesecna clanarina:</span>
+            <span class="detalji">@ViewBag.teretana.CenaMesec din</span>
+        </div>
+        <div>
+            <span class="detaljiNaslov">Godisnja clanarina:</span>
+            <span class="detalji">@ViewBag.teretana.CenaGodina din</span>
+        </div>
+        <div>
+            <span class="detaljiNaslov">Cena jednog treninga:</span>
+            <span class="detalji">@ViewBag.teretana.CenaTrening din</span>
+        </div>
+        <div>
+            <span class="detaljiNaslov">Cena grupnog treninga:</span>
+            <span class="detalji">@ViewBag.teretana.CenaGrupniTrening din</span>
+        </div>
+        <div>
+            <span class="detaljiNaslov">Cena personalnog treninga:</span>
+            <span class="detalji">@ViewBag.teretana.CenaPersonalniTrening din</span>
+        </div>
+        <br />
+        <p class="detaljiNaslov">Lista grupnih treninga: </p>
+        @if (ViewBag.grupniTreninzi.Count != 0)
         {
-            <tr>
-                <td align="center">@item.Naziv</td>
-                <td align="center">@item.TipTreninga</td>
-                <td align="center">@item.Fitnes_centar</td>
-                <td align="center">@item.TrajanjeTreninga</td>
-                <td align="center">@item.DatumTreninga</td>
-                <td align="center">@item.VremeTreninga</td>
-                <td align="center">@item.MaxPosetioci</td>
-                <td align="center">@item.Posetioci.Count</td>
-                <td align="center">
-                    <form action="~/Home/PrijaviSeZaGrupniTrening">
+            <table border="1">
+                <tr>
+                    <th class="tableHeader">Naziv</th>
+                    <th class="tableHeader">Tip treninga</th>
+                    <th class="tableHeader">Fitnes centar</th>
+                    <th class="tableHeader">Trajanje treninga</th>
+                    <th class="tableHeader">Datum</th>
+                    <th class="tableHeader">Vreme</th>
+                    <th class="tableHeader">Maksimalan broj posetilaca</th>
+                    <th class="tableHeader">Broj prijavljenih korisnika na trening</th>
+                    <th class="tableHeader">Prijavi se</th>
 
-                        <button name="naziv" value="@item.Naziv">Prijavi se</button>
-
-                    </form>
-                </td>
-            </tr>
+                </tr>
+                @foreach (GrupniTrening item in ViewBag.grupniTreninzi)
+                {
+                    <tr class="tableRow">
+                        <td class="tableDataDetail">@item.Naziv</td>
+                        <td class="tableDataDetail">@item.TipTreninga</td>
+                        <td class="tableDataDetail">@item.Fitnes_centar</td>
+                        <td class="tableDataDetail">@item.TrajanjeTreninga</td>
+                        <td class="tableDataDetail">@item.DatumTreninga</td>
+                        <td class="tableDataDetail">@item.VremeTreninga h</td>
+                        <td class="tableDataDetail">@item.MaxPosetioci</td>
+                        <td class="tableDataDetail">@item.Posetioci.Count</td>
+                        <td class="tableDataDetail">
+                            @{
+                                int dan = Int32.Parse(item.DatumTreninga.Split('/')[0]);
+                                int mesec = Int32.Parse(item.DatumTreninga.Split('/')[1]);
+                                int trenutniMesec = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[0]);
+                                int trenutniDan = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[1]);
+                                if (mesec >= trenutniMesec || (dan >= trenutniDan && mesec == trenutniDan))
+                                {
+                                    <form action="~/Home/PrijaviSeZaGrupniTrening">
+                                        <button class="btn" name="naziv" value="@item.Naziv">Prijavi se</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <button class="treningProsao">Stari trening</button>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
         }
-    </table>
-</div>
+    </div>
+</body>
+</html>
+
 

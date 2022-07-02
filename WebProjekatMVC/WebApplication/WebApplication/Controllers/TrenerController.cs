@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -61,18 +62,22 @@ namespace WebApplication.Controllers
             }
 
             string datum = gt.DatumTreninga;
-            string dan = datum.Split('/')[0];
-            string trenutniDatum = DateTime.Now.ToString("dd/MM/yyyy");
-            string trenutniDan = trenutniDatum.Split('/')[0];
+            int dan = Int32.Parse(gt.DatumTreninga.Split('/')[0]);
+            int mesec = Int32.Parse(gt.DatumTreninga.Split('/')[1]);
+            int trenutniDan = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[1]);
+            int trenutniMesec = Int32.Parse(DateTime.Now.ToString("d", CultureInfo.GetCultureInfo("en-US")).Split('/')[0]);
 
-            int danBroj = Int32.Parse(dan);
-            int trenutniDanBroj = Int32.Parse(trenutniDan);
-            
-            if(danBroj < trenutniDanBroj + 3)
+            if (dan < trenutniDan + 3)
             {
-                ViewBag.message = $"Teretana sa nazivom {gt.Fitnes_centar} ne postoji, probajte opet";
+                ViewBag.message = $"Trening mora biti zakazan najmanje 3 dana u napred!";
                 return View("Add");
             }
+            if (mesec < trenutniMesec || (dan < trenutniDan && mesec == trenutniDan))
+            {
+                ViewBag.message = $"Trening moze biti zakazan samo za buducnost";
+                return View("Add");
+            }
+
 
             gt.Posetioci = new List<Korisnik>();
             sviTreninzi.Add(gt);
@@ -151,7 +156,7 @@ namespace WebApplication.Controllers
 
             foreach (GrupniTrening x in sviTreninzi)
             {
-                if (x.Naziv.Equals(gt.Naziv))
+                if (x.Naziv.Equals(gt.Naziv) && !stariTrening.Naziv.Equals(gt.Naziv))
                 {
                     ViewBag.message = $"Trening pod nazivom {x.Naziv} vec postoji!";
                     return View("Notification");
@@ -163,18 +168,9 @@ namespace WebApplication.Controllers
                 index++;
             }
 
-            try
-            {
-                string datum = gt.DatumTreninga;
-                DateTime unetDatum = Convert.ToDateTime(datum);
-            }
-            catch
-            {
-                ViewBag.message = $"Uneti datum rodjenja je pogresnog formata";
-                return View("Notification");
-            }
+            
 
-            if(gt.MaxPosetioci < stariTrening.Posetioci.Count)
+            if (gt.MaxPosetioci < stariTrening.Posetioci.Count)
             {
                 ViewBag.message = $"Maksimalni broj posetioca ne moze biti manji od broja trenutno prijavljenih";
                 return View("Notification");

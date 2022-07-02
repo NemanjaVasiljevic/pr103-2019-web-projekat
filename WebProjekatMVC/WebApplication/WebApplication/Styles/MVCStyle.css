@@ -1,0 +1,97 @@
+﻿.tableRow{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:17px;
+    text-align:center;
+
+}
+
+.tableHeader {
+    font-weight: bold;
+    color: white;
+    font-size: 19px;
+    background-color: #490479;
+    text-align:center;
+}
+
+.tableData {
+    min-width: 200px;
+    text-align: center;
+    font-weight:lighter;
+    background-color:#e6c6ff;
+}
+
+.tableDataDetail{
+    min-width: 100px;
+    text-align: center;
+    font-weight:lighter;
+    background-color:#e6c6ff;
+}
+
+.btn {
+    color: white;
+    background-color: #490479;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    border-radius: 0%;
+    border: 1px solid black;
+}
+    .btn:hover {
+        background-color: #c07afe;
+        color: black;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 15px;
+    }
+
+.btnSort {
+    color: white;
+    background-color: #490479;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 17px;
+    margin-bottom: 2px;
+    border-radius: 0%;
+
+}
+.btnSort:hover {
+    background-color: #9afe8a;
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+
+}
+
+.kombinovanaPretraga{
+    margin:15px 0 15px 0;
+    border:1px solid black;
+    background-color:#faf153;
+    color:black;
+    font-size:20px;
+    width:100%;
+    text-align:center;
+    font-weight:bold;
+}
+
+.btnKombinovano{
+    margin-top:10px;
+}
+
+.detaljiNaslov{
+    font-size:17px;
+    font-weight:bold;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.detalji {
+    font-size: 17px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:#088732;
+}
+
+.treningProsao {
+    color: white;
+    background-color: #490479;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    border-radius: 0%;
+    border: 1px solid black;
+    cursor:pointer;
+}

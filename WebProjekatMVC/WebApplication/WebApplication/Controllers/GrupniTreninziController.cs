@@ -9,7 +9,8 @@ namespace WebApplication.Controllers
 {
     public class GrupniTreninziController : Controller
     {
-        private static List<GrupniTrening> sortirani = new List<GrupniTrening>();
+        private static List<GrupniTrening> sortiraniPosetilac = new List<GrupniTrening>();
+        private static List<GrupniTrening> sortiraniTrener = new List<GrupniTrening>();
         // GET: GrupniTreninzi
         public ActionResult Index()
         {
@@ -24,7 +25,9 @@ namespace WebApplication.Controllers
             ViewBag.korisnik = k;
             if(treninzi.Count == 0)
             {
-                ViewBag.treninzi = sortirani;
+                ViewBag.treninziPosetilac = sortiraniPosetilac;
+                ViewBag.treninziTrener = sortiraniTrener;
+
             }
             else
             {
@@ -88,6 +91,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -121,6 +125,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -154,6 +159,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -187,6 +193,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -220,6 +227,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -253,6 +261,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -286,6 +295,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -319,6 +329,7 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
@@ -353,13 +364,22 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.Naziv).ToList();
+            sortiraniPosetilac = gt.OrderBy(x => x.Naziv).ToList();
+            try
+            {
+                sortiraniTrener = k.GrupniTreninziTrener;
+            }
+            catch
+            {
+                Console.WriteLine();
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -373,13 +393,23 @@ namespace WebApplication.Controllers
                 if (x.KorisnickoIme.Equals(k.KorisnickoIme))
                 {
                     k = x;
+                    break;
                 }
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.Naziv).ToList();
+            sortiraniTrener = gt.OrderBy(x => x.Naziv).ToList();
+            try
+            {
+                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -399,7 +429,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.Naziv).Reverse().ToList();
+            sortiraniPosetilac = gt.OrderBy(x => x.Naziv).Reverse().ToList();
+            try
+            {
+                sortiraniTrener = k.GrupniTreninziTrener;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine();
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -419,7 +458,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.Naziv).Reverse().ToList();
+            sortiraniTrener = gt.OrderBy(x => x.Naziv).Reverse().ToList();
+            try
+            {
+                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine();
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -442,7 +490,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.TipTreninga).ToList();
+            sortiraniPosetilac = gt.OrderBy(x => x.TipTreninga).ToList();
+            try
+            {
+                sortiraniTrener = k.GrupniTreninziTrener;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine(); 
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -462,7 +519,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.TipTreninga).ToList();
+            sortiraniTrener = gt.OrderBy(x => x.TipTreninga).ToList();
+            try
+            {
+                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine(); 
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -482,7 +548,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.TipTreninga).Reverse().ToList();
+            sortiraniPosetilac = gt.OrderBy(x => x.TipTreninga).Reverse().ToList();
+            try
+            {
+                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine(); 
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -502,7 +577,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.TipTreninga).Reverse().ToList();
+            sortiraniTrener = gt.OrderBy(x => x.TipTreninga).Reverse().ToList();
+            try
+            {
+                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine(); 
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -525,7 +609,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.DatumTreninga).ToList();
+            sortiraniPosetilac = gt.OrderBy(x => x.DatumTreninga).ToList();
+            try
+            {
+                sortiraniTrener = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine(); 
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -545,7 +638,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.DatumTreninga).ToList();
+            sortiraniTrener = gt.OrderBy(x => x.DatumTreninga).ToList();
+            try
+            {
+                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine(); 
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -565,7 +667,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.DatumTreninga).Reverse().ToList();
+            sortiraniPosetilac = gt.OrderBy(x => x.DatumTreninga).Reverse().ToList();
+            try
+            {
+                sortiraniTrener = k.GrupniTreninziTrener;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine();
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }
@@ -585,7 +696,16 @@ namespace WebApplication.Controllers
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
             List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
             treninzi.Clear();
-            sortirani = gt.OrderBy(x => x.DatumTreninga).Reverse().ToList();
+            sortiraniTrener = gt.OrderBy(x => x.DatumTreninga).Reverse().ToList();
+            try
+            {
+                sortiraniPosetilac = k.GrupniTreninziPosetilac;
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine();
+            }
             return RedirectToAction("Index", "GrupniTreninzi");
 
         }

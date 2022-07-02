@@ -6,60 +6,58 @@
 <html>
 <head>
     <title>FitApp</title>
+    @Styles.Render("~/Styles/MVCStyle.css")
 </head>
 <body>
     <h2>Fitnes centri</h2>
-    <table border="1">
-        <tr>
-            <th>Naziv</th>
-            <th>Adresa</th>
-            <th>Godina otvaranja</th>
-            <th>Komande</th>
+    <table border="1"">
+        <tr class="tableRow">
+            <th class="tableHeader">Naziv</th>
+            <th class="tableHeader">Adresa</th>
+            <th class="tableHeader">Godina otvaranja</th>
+            <th class="tableHeader"></th>
         </tr>
         @foreach (FitnesCentar fc in Model)
         {
-            <tr>
-                <td>@fc.Naziv</td>
-                <td>@fc.Adresa.ToString()</td>
-                <td>@fc.GodinaOtvaranja</td>
-                <td>
-                    <form action="">
-                        <button name="fc" value="@fc.Naziv">Obrisi</button>
-                    </form>
-                    <form action="">
-                        <button name="fc" value="@fc.Naziv">Modifikuj</button>
+            <tr class="tableRow">
+                <td class="tableData">@fc.Naziv</td>
+                <td class="tableData">@fc.Adresa.ToString()</td>
+                <td class="tableData">@fc.GodinaOtvaranja</td>
+                <td >
+                    <form action="~/Home/Details">
+                        <button class="btn" name="fc" value="@fc.Naziv">Detalji</button>
                     </form>
                 </td>
             </tr>
         }
     </table>
     <br /><br /><br />
-    <form action="~/Home/SortByNameAsc">
-        <input type="submit" value="Sortiraj po imenu rastuce" />
+    <form action="Home/SortByNameAsc">
+        <input class="btnSort" type="submit" value="Sortiraj po imenu rastuce" />
     </form>
     <form action="~/Home/SortByNameDesc">
-        <input type="submit" value="Sortiraj po imenu opadajuce" />
+        <input class="btnSort" type="submit" value="Sortiraj po imenu opadajuce" />
     </form>
 
     <form action="~/Home/SortByAddressAsc">
-        <input type="submit" value="Sortiraj po adresi rastuce" />
+        <input class="btnSort" type="submit" value="Sortiraj po adresi rastuce" />
     </form>
     <form action="~/Home/SortByAddressDesc">
-        <input type="submit" value="Sortiraj po adresi opadajuce" />
+        <input class="btnSort" type="submit" value="Sortiraj po adresi opadajuce" />
     </form>
 
     <form action="~/Home/SortByYearAsc">
-        <input type="submit" value="Sortiraj po godini rastuce" />
+        <input class="btnSort" type="submit" value="Sortiraj po godini rastuce" />
     </form>
     <form action="~/Home/SortByYearDesc">
-        <input type="submit" value="Sortiraj po godini opadajuce" />
+        <input class="btnSort" type="submit" value="Sortiraj po godini opadajuce" />
     </form>
     <br /><br />
 
     <form action="~/Home/SearchByName">
         <label for="searchByName">Search by name:</label>
         <input type="text" name="Naziv" placeholder="Gym name" />
-        <button class="search-button" id="searchByName">Search</button>
+        <button class="btn" id="searchByName">Search</button>
     </form>
 
     <form action="~/Home/SearchByAddress">
@@ -68,17 +66,17 @@
         <input type="text" id="Broj" name="Broj" placeholder="Broj" />
         <input type="text" id="Grad" name="Grad" placeholder="Grad" />
         <input type="text" id="PostanskiBroj" name="PostanskiBroj" placeholder="Postanski broj" />
-        <button class="search-button" id="searchByAddress">Search</button>
+        <button class="btn" id="searchByAddress">Search</button>
     </form>
 
     <form action="~/Home/SearchByYear">
         <label for="searchByYear">Search by year:</label>
         <input type="number" name="from" id="from" placeholder="From" />
         <input type="number" name="to" id="to" placeholder="To" />
-        <button class="search-button" id="searchByYear">Search</button>
+        <button class="btn" id="searchByYear">Search</button>
     </form>
 
-    <p>Kombinovana pretraga</p>
+    <p class="kombinovanaPretraga">Kombinovana pretraga</p>
     <div>
         <form action="~/Home/KombinovanaPretraga">
             <input type="text" name="Naziv" placeholder="Naziv" />
@@ -87,7 +85,7 @@
             <input type="text" id="Grad" name="Grad" placeholder="Grad" />
             <input type="number" name="from" id="from" placeholder="From" />
             <input type="number" name="to" id="to" placeholder="To" />
-            <button class="search-button" id="kombinovanaPretraga">Pronadji</button>
+            <button class="btn btnKombinovano" id="kombinovanaPretraga">Pronadji</button>
         </form>
     </div>
 
