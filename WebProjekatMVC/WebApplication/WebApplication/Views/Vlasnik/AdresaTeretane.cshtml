@@ -3,30 +3,44 @@
     ViewBag.Title = "AdresaTeretane";
 }
 
-<h2 style="color:red">@ViewBag.message</h2>
-<h2>AdresaTeretane</h2>
-<form action="~/Vlasnik/AdresaTeretane" method="post">
-    <table>
-        <tr>
-            <td>Ulica:</td>
-            <td><input type="text" name="Ulica" placeholder="Unesite ulicu" /></td>
-        </tr>
-        <tr>
-            <td>Broj:</td>
-            <td><input type="text" name="Broj" placeholder="Unesite broj" /></td>
-        </tr>
-        <tr>
-            <td>Grad:</td>
-            <td><input type="text" name="Grad" placeholder="Unesite grad" /></td>
-        </tr>
-        <tr>
-            <td>Postanski broj:</td>
-            <td><input type="number" name="PostanskiBroj" placeholder="Unesite postanski broj" /></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Zavrsi adresu" />
-            </td>
-        </tr>
-    </table>
-</form>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    @Styles.Render("~/Styles/MVCStyle.css")
+
+</head>
+<body>
+    <h2 style="color:red">@ViewBag.message</h2>
+    <h2>AdresaTeretane</h2>
+    <form action="~/Vlasnik/AdresaTeretane" method="post">
+        <table>
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Ulica:</td>
+                <td class="tableData"><input type="text" name="Ulica" placeholder="Unesite ulicu" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Broj:</td>
+                <td class="tableData"><input type="text" name="Broj" placeholder="Unesite broj" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Grad:</td>
+                <td class="tableData"><input type="text" name="Grad" placeholder="Unesite grad" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Postanski broj:</td>
+                <td class="tableData"><input type="number" name="PostanskiBroj" placeholder="Unesite postanski broj" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData" style="background-color:#490479;" colspan="2">
+                    <input class="btn" style="width:100%; border:none;" type="submit" value="Zavrsi adresu" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
+

@@ -40,12 +40,40 @@ namespace WebApplication.Controllers
         public ActionResult Register(Korisnik k)
         {
             List<Korisnik> defaultKorisnici = Korisnik.ReadFromJson();
-            if (defaultKorisnici.Contains(k))
+            foreach (Korisnik x in defaultKorisnici)
             {
-                ViewBag.Message = $"Korisnik {k.KorisnickoIme} vec postoji!";
-                return View();
+                if (x.KorisnickoIme.Equals(k.KorisnickoIme))
+                {
+                    ViewBag.Message = $"Korisnik {k.KorisnickoIme} vec postoji!";
+                    return View("Register");
+                }
+            }
+            foreach (Korisnik x in defaultKorisnici)
+            {
+                if (x.Email.Equals(k.Email))
+                {
+                    ViewBag.Message = $"Korisnik sa mejlon {k.Email} vec postoji!";
+                    return View("Register");
+                }
+            }
+            if (k.KorisnickoIme == "" || k.Lozinka == "" || k.Ime == "" || k.Prezime == "" ||
+               k.Pol.ToString() == "" || k.Email == "" || k.DatumRodjenja == "")
+            {
+                ViewBag.message = "Sva polja moraju biti popunjena";
+                return View("Register");
+            }
+            if (k.KorisnickoIme == null || k.Lozinka == null || k.Ime == null || k.Prezime == null ||
+              k.Pol.ToString() == null || k.Email == null || k.DatumRodjenja == null)
+            {
+                ViewBag.message = "Sva polja moraju biti popunjena";
+                return View("Register");
             }
 
+            if (k.Email.Split('@').Length == 1)
+            {
+                ViewBag.message = "Email nije unet kako treba";
+                return View("Register");
+            }
             defaultKorisnici.Add(k);
             Korisnik.WriteToJson(defaultKorisnici);
             Session["user"] = k;
@@ -55,7 +83,7 @@ namespace WebApplication.Controllers
         public ActionResult Login(string username, string password)
         {
            
-                if (username.Equals(String.Empty) || username.Equals(String.Empty))
+            if (username.Equals(String.Empty) || username.Equals(String.Empty))
             {
                 ViewBag.message = "Sva polja moraju biti popunjena";
                 return View("Login");

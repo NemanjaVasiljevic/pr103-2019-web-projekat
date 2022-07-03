@@ -62,5 +62,10 @@ namespace WebApplication.Models
                 writer.Write(jsonToWrite);
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Naziv}";
+        }
     }
 }

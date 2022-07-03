@@ -281,21 +281,30 @@ namespace WebApplication.Controllers
             {
                 if (x.Uloga.ToString().Equals(Uloga.TRENER.ToString()))
                 {
-                    foreach (GrupniTrening g in x.GrupniTreninziTrener)
+                    if (x.GrupniTreninziTrener != null)
                     {
-                        if (g.Naziv.Equals(naziv))
+                        foreach (GrupniTrening g in x.GrupniTreninziTrener)
                         {
-                            trener = x;
+                            if (g.Naziv.Equals(naziv))
+                            {
+                                trener = x;
+                                break;
+                            }
+                        }
+                        if (trener != null)
+                        {
                             break;
                         }
-                    }
-                    if (trener != null)
-                    {
-                        break;
                     }
                 }
             }
             
+            if(trener == null)
+            {
+                ViewBag.message = "Trenutno nema angazovanog trenera na ovom treningu";
+                return View("Notification");
+            }
+
             // ako nije ulogovan 
             if (k == null)
             {

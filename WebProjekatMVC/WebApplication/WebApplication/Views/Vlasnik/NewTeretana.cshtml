@@ -3,44 +3,59 @@
     ViewBag.Title = "NewTeretana";
 }
 
-<h2 style="color:red">@ViewBag.message</h2>
-<h2>Dodaj novu teretanu</h2>
 
-<form action="~/Vlasnik/NovaTeretana" method="post">
-    <table>
-        <tr>
-            <td>Naziv:</td>
-            <td><input type="text" name="Naziv" placeholder="Unesite naziv teretane" /></td>
-        </tr>
-        <tr>
-            <td>Godina otvaranja:</td>
-            <td><input type="number" name="GodinaOtvaranja" placeholder="Godina otvaranja" /></td>
-        </tr>
-        <tr>
-            <td>Mesecna clanarina:</td>
-            <td><input type="number" name="CenaMesec" placeholder="Unesite mesecnu clanarinu" /></td>
-        </tr>
-        <tr>
-            <td>Godisnja clanarina:</td>
-            <td><input type="number" name="CenaGodina" placeholder="Unesite godisnju clanarinu" /></td>
-        </tr>
-        <tr>
-            <td>Cena po treningu:</td>
-            <td><input type="number" name="CenaTrening" placeholder="Unesite cenu jednog treninga" /></td>
-        </tr>
-        <tr>
-            <td>Cena grupnog treninga:</td>
-            <td><input type="number" name="CenaGrupniTrening" placeholder="Unesite cenu grupnog treninga" /></td>
-        </tr>
-        <tr>
-            <td>Cena personalnog treninga:</td>
-            <td><input type="number" name="CenaPersonalniTrening" placeholder="Unesite cenu personalnog treninga" /></td>
-        </tr>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    @Styles.Render("~/Styles/MVCStyle.css")
+</head>
+<body>
+    <h2 style="color:red">@ViewBag.message</h2>
+    <h2>Dodaj novu teretanu</h2>
 
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Dodaj teretanu" />
-            </td>
-        </tr>
-    </table>
-</form>
+    <form action="~/Vlasnik/NovaTeretana" method="post">
+        <table>
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Naziv:</td>
+                <td class="tableData"><input type="text" name="Naziv" placeholder="Unesite naziv teretane" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Godina otvaranja:</td>
+                <td class="tableData"><input type="number" name="GodinaOtvaranja" placeholder="Godina otvaranja" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Mesecna clanarina:</td>
+                <td class="tableData"><input type="number" name="CenaMesec" placeholder="Unesite mesecnu clanarinu" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Godisnja clanarina:</td>
+                <td class="tableData"><input type="number" name="CenaGodina" placeholder="Unesite godisnju clanarinu" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Cena po treningu:</td>
+                <td class="tableData"><input type="number" name="CenaTrening" placeholder="Unesite cenu jednog treninga" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Cena grupnog treninga:</td>
+                <td class="tableData"><input type="number" name="CenaGrupniTrening" placeholder="Unesite cenu grupnog treninga" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData">Cena personalnog treninga:</td>
+                <td class="tableData"><input type="number" name="CenaPersonalniTrening" placeholder="Unesite cenu personalnog treninga" /></td>
+            </tr>
+
+            <tr class="tableRow" style="border:1px solid black;">
+                <td class="tableData" style="background-color:#490479;" colspan="2">
+                    <input class="btn" style="width:100%; border:none;" type="submit" value="Dodaj teretanu" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+

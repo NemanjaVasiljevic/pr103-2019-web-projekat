@@ -31,17 +31,11 @@ namespace WebApplication.Controllers
                     break;
                 }
             }
-            ViewBag.korisnik = k;
-            if (treninzi.Count == 0)
-            {
-                ViewBag.treninziPosetilac = sortiraniPosetilac;
-                ViewBag.treninziTrener = sortiraniTrener;
 
-            }
-            else
-            {
-                ViewBag.treninzi = treninzi;
-            }
+            ViewBag.korisnik = k;
+            ViewBag.treninziPosetilac = sortiraniPosetilac;
+            ViewBag.treninziTrener = sortiraniTrener;
+            ViewBag.treninzi = treninzi;
 
             return View();
         }
@@ -105,8 +99,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniPosetilac.Clear();
+            sortiraniTrener = k.GrupniTreninziTrener;
 
             if (naziv.Equals(""))
             {
@@ -117,7 +111,7 @@ namespace WebApplication.Controllers
             {
                 if (x.Naziv.Equals(naziv))
                 {
-                    treninzi.Add(x);
+                    sortiraniPosetilac.Add(x);
                 }
             }
 
@@ -139,8 +133,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniTrener.Clear();
+            sortiraniPosetilac = k.GrupniTreninziPosetilac;
 
             if (naziv.Equals(""))
             {
@@ -151,7 +145,7 @@ namespace WebApplication.Controllers
             {
                 if (x.Naziv.Equals(naziv))
                 {
-                    treninzi.Add(x);
+                    sortiraniTrener.Add(x);
                 }
             }
 
@@ -173,8 +167,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniPosetilac.Clear();
+            sortiraniTrener = k.GrupniTreninziTrener;
 
             if (tipTreninga.Equals(""))
             {
@@ -185,7 +179,7 @@ namespace WebApplication.Controllers
             {
                 if (x.TipTreninga.Equals(tipTreninga))
                 {
-                    treninzi.Add(x);
+                    sortiraniPosetilac.Add(x);
                 }
             }
 
@@ -207,8 +201,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniTrener.Clear();
+            sortiraniPosetilac = k.GrupniTreninziPosetilac;
 
             if (tipTreninga.Equals(""))
             {
@@ -219,7 +213,7 @@ namespace WebApplication.Controllers
             {
                 if (x.TipTreninga.Equals(tipTreninga))
                 {
-                    treninzi.Add(x);
+                    sortiraniTrener.Add(x);
                 }
             }
 
@@ -241,8 +235,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniPosetilac.Clear();
+            sortiraniTrener = k.GrupniTreninziTrener;
 
             if (centar.Equals(""))
             {
@@ -253,7 +247,7 @@ namespace WebApplication.Controllers
             {
                 if (x.Fitnes_centar.Equals(centar))
                 {
-                    treninzi.Add(x);
+                    sortiraniPosetilac.Add(x);
                 }
             }
 
@@ -275,8 +269,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniTrener.Clear();
+            sortiraniPosetilac = k.GrupniTreninziPosetilac;
 
             if (datum.Equals("") || vreme.Equals(""))
             {
@@ -287,7 +281,7 @@ namespace WebApplication.Controllers
             {
                 if (x.DatumTreninga.Equals(datum) && x.VremeTreninga.Equals(vreme))
                 {
-                    treninzi.Add(x);
+                    sortiraniTrener.Add(x);
                 }
             }
 
@@ -309,8 +303,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziPosetilac;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniPosetilac.Clear();
+            sortiraniTrener = k.GrupniTreninziTrener;
 
             if (centar.Equals("") || tipTreninga.Equals("") || naziv.Equals(""))
             {
@@ -321,7 +315,7 @@ namespace WebApplication.Controllers
             {
                 if (x.Naziv.Equals(naziv) && x.TipTreninga.Equals(tipTreninga) && x.Fitnes_centar.Equals(centar))
                 {
-                    treninzi.Add(x);
+                    sortiraniPosetilac.Add(x);
                 }
             }
 
@@ -343,8 +337,8 @@ namespace WebApplication.Controllers
             }
 
             List<GrupniTrening> gt = k.GrupniTreninziTrener;
-            List<GrupniTrening> treninzi = (List<GrupniTrening>)HttpContext.Application["treninzi"];
-            treninzi.Clear();
+            sortiraniTrener.Clear();
+            sortiraniPosetilac = k.GrupniTreninziPosetilac;
 
             if (naziv.Equals("") || tipTreninga.Equals("") || datum.Equals("") || vreme.Equals(""))
             {
@@ -355,7 +349,7 @@ namespace WebApplication.Controllers
             {
                 if (x.Naziv.Equals(naziv) && x.TipTreninga.Equals(tipTreninga) && x.DatumTreninga.Equals(datum) && x.VremeTreninga.Equals(vreme))
                 {
-                    treninzi.Add(x);
+                    sortiraniTrener.Add(x);
                 }
             }
 
